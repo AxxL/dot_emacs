@@ -1,0 +1,109 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; SPECIAL EMACS CUSTOMIZATIONS FOR JAVASCRIPT EDITING
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+;; ,----
+;; | Open HTML with Firefox as default
+;; `----
+(setq browse-url-firefox-program "C:/Program Files (x86)/Mozilla Firefox/firefox.exe")
+(setq browse-url-generic-program "C:/Program Files (x86)/Mozilla Firefox/firefox.exe"
+      browse-url-browser-function 'browse-url-generic) 
+
+;; ,----
+;; | BROWSE URL WITH URL NOT FILE PATH IN BROWSER
+;; `----
+;; http://www.emacswiki.org/emacs/BrowseUrl
+;; 
+;; (add-to-list 'browse-url-filename-alist
+;;  '("/var/www/cgi/files/" . "http://my.website.com/cgi?"))
+(setq browse-url-filename-alist
+      '(("C:/inetpub/wwwroot/" . "http://linvers/")))
+(global-set-key (quote [C-f11]) 'browse-url-of-file)
+
+
+;; ,----
+;; | NAV
+;; `----
+(add-to-list 'load-path "~/.emacs.d/emacs-nav-49/")
+(require 'nav)
+(nav-disable-overeager-window-splitting)
+;; Optional: set up a quick key to toggle nav
+(global-set-key [f11] 'nav-toggle)
+
+
+
+
+;; ,----
+;; | PROJECT MODE
+;; `----
+(require 'project-mode)
+(project-load-all) ; Loads all saved projects. Not required.
+
+
+;;,----
+;;| nXhtml MODE
+;;`----
+;; (load "~/.emacs.d/nxhtml/autostart.el")
+;; (tabkey2-mode 1)
+
+;; Completion normally M-Tab
+;; M-x tabkey2-mode
+;; Wrong colors in Mumamo
+;;  M-x mumamo-no-chunk-coloring
+;; ,----
+;; | FLYMAKE
+;; `----
+(when (load "flymake" t)
+  (defun flymake-jslint-init ()
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                       'flymake-create-temp-inplace))
+           (local-file (file-relative-name
+                        temp-file
+                        (file-name-directory buffer-file-name))))
+      (list "jshint" (list local-file))))
+
+  (setq flymake-err-line-patterns
+        ;; tester.js: line 23, col 15, Expected ':' and instead saw '='.
+        ;; "^\\(.*\\)\: line \\([[:digit:]]*\\), col [[:digit:]]*, \\(.*\\)$"
+	(cons '("^\\(.*\\)\: line \\([[:digit:]]*\\), col [[:digit:]]*, \\(.*\\)$"
+            1 2 nil 3)
+	      flymake-err-line-patterns))
+
+  (add-to-list 'flymake-allowed-file-name-masks
+               '("\\.js\\'" flymake-jslint-init))
+
+  (require 'flymake-cursor)
+  )
+
+;; Turns on flymake for all files which have a flymake mode
+;; (add-hook 'find-file-hook 'flymake-find-file-hook)
+
+
+(add-hook 'js-mode-hook
+ 	  (lambda ()
+       (flymake-mode 1)
+       (define-key js-mode-map "\C-c\C-n" 'flymake-goto-next-error)))
+
+
+;; ,----
+;; | AUTO-COMPLETE
+;; `----
+(add-to-list 'load-path "~/.emacs.d/")
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(ac-config-default)
+
+
+;; ,----
+;; | YASNIPPET
+;; `----
+;; installed by M-x list-packkages
+(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-0.8.0")
+(require 'yasnippet)
+(yas-global-mode 1)
+;; Let's have snippets in the auto-complete dropdown
+(add-to-list 'ac-sources 'ac-source-yasnippet)
