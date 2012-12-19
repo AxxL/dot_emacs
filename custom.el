@@ -17,14 +17,13 @@
  '(inhibit-startup-screen t)
  '(ispell-silently-savep t)
  '(load-home-init-file t t)
- '(make-backup-files nil)
+ '(make-backup-files t)
  '(mm-text-html-renderer (quote html2text))
  '(mumamo-chunk-coloring 2)
  '(require-final-newline t)
  '(show-paren-mode 1)
  '(show-paren-style (quote mixed))
- '(tab-width 4)
- '(tool-bar-mode nil))
+ '(tab-width 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

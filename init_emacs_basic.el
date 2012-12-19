@@ -66,13 +66,6 @@
             kill-emacs-query-functions))
 
 ;; ,----
-;; | Quote Other Window (Control-Tab)
-;; `----
-
-(global-set-key (quote [C-tab]) (quote other-window))
-;; --> default: C-x o
-
-;; ,----
 ;; | Titlebar mit Dateiname
 ;; `----
 

@@ -1,3 +1,25 @@
+;; ,----
+;; | IDO-Mode
+;; | http://emacswiki.org/emacs/InteractivelyDoThings
+;; `----
+(require 'ido)
+(ido-mode t)
+(setq ido-enable-flex-matching t)
+
+
+;; ,----
+;; | Testing interface
+;; | http://whattheemacsd.com/init.el-01.html 
+;; `----
+;; Turn off mouse interface early in startup to avoid momentary display
+;; (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+;; (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+
+;; No splash screen please ... jeez
+(setq inhibit-startup-message t)
+
+
 ;; pretty prints the selection on a json document
 ;; uses python.
 ;; adjust the python path and executable.
@@ -8,7 +30,7 @@
 )
 
 ;; Mumamo is making emacs 23.3 freak out:
-(setq warning-minimum-level :error) 
+;; i guess i switched off mumamo (setq warning-minimum-level :error) 
 
 ;; Font
 (set-face-attribute 'default nil :font "Bitstream Vera Sans Mono")
@@ -33,12 +55,13 @@
 (load "~/.emacs.d/tabbar.el")
 (tabbar-mode 1)
 
-
-
 ;; ,----
-;; | SOME KEY
+;; | SOME KEYS
 ;; `----
+;; indent-region
 (global-set-key (quote [C-f10]) (quote indent-region))
+;; quote other window (default: C-x o)
+(global-set-key (quote [C-tab]) (quote other-window))
 
 ;; ,----
 ;; | Org-Mode Other Window
