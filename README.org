@@ -1,0 +1,103 @@
+# -*- mode: org -*-
+
+*dot-emacs* is my personal .emacs for Emacs 24 on Windows.
+
+* Files
+
+  - init.el: The main file located at =~/.emacs.d/init.el=
+  - custom.el: customizations by =M-x customize=
+  - init_emacs_basic.el: Basic customizations for every mode
+  - init_emacs_js.el: Customizations especially for JavaScript editing
+
+
+* Usage
+
+The =init.el= file contains some additional lines for stuff that I'm still
+testing. In the end this file should contain at least this lines:
+
+#+BEGIN_EXAMPLE
+;; Load external files
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
+
+(load "~/.emacs.d/init_emacs_basic.el")
+
+(load "~/.emacs.d/init_emacs_js.el")
+#+END_EXAMPLE
+
+That loads the three additional files: =custom.el= which is used by the
+customization functionality of Emacs (=(load custom file)=),
+=init_emacs_basic.el= and =init_emacs_js.el=.
+
+
+
+* Modes used
+
+I use a lot of modes that have been accumulated over the years. I threw away
+some modes, and I'm still testing and I bet I will use some other modes in
+the future. Anyway, I think this list is nearly complete.
+
+  - [[http://jblevins.org/projects/markdown-mode/][markdown-mode]]
+  - [[https://github.com/capitaomorte/autopair][autopair]]
+  - [[http://emacswiki.org/emacs/InteractivelyDoThings][IDO mode (Emacs Wiki link)]]
+  - [[http://nyan-mode.buildsomethingamazing.com/][nyan mode]]
+  - [[http://emacswiki.org/emacs/TabBarMode][tabbar (Emacs Wiki link)]]
+  - [[http://emacswiki.org/emacs/OrgMode][org-mode (Emacs Wiki link. It's included in newer Emacs but it's so
+    great I have to mention it.)]]
+  - [[https://github.com/emacsmirror/multiple-cursors][multiple cursors]]
+  - [[http://www.emacswiki.org/emacs/BoxQuote][boxquote (Emacs Wiki link)]]
+  - [[http://emacswiki.org/emacs/ColorTheme][color theme (Emacs Wiki link)]]. I use the [[https://github.com/jimeh/birds-of-paradise-plus-theme.el][Birds of Paradise]] theme.
+  - [[http://www.emacswiki.org/Nav][nav (Emacs Wiki link)]]
+  - [[http://code.google.com/p/emacs-project-mode/][project mode]]
+  - [[http://cx4a.org/software/auto-complete/][auto-complete]]
+  - [[https://github.com/capitaomorte/yasnippet][yasnippet]]
+
+
+** Own functions
+  - =query-replace-in-open-buffers=
+  - =duplicate-line=
+  - =pretty-print-json=
+
+
+** Things I've switched off
+  - tool bar mode
+  - scroll bar mode
+
+
+** Customizations
+  - ERC
+  - easymenu
+  - Diary
+  - ASPELL
+  - flymake with JSHint (node.js)
+
+
+** Extra keys
+
+  - C-tab: =other-window=  
+  - C-M-ß: =indent-region= (It's nearly impossible on german keyboard layouts to hit =C-M-\=. This is somehow an equivalent keystroke.)
+  - C-c d: =duplicate-line=
+  - C-f11: =browse-url-of-file=
+  - f11: =nav-toggle=
+  - C-S-c C-S-c: =mc/edit-lines=
+  - C-d: =mc/mark-next-like-this=
+  - C-S-d: =mc/mark-previous-like-this=
+  - In js-mode: C-C C-n: =flymake-goto-next-error=
+
+
+** Things I've quit
+
+  - Mumamo and HTML/JavaScript modes.
+  - Slime
+
+
+** External stuff
+
+  - Python
+  - Bitstream Vera Sans Mono
+  - node.js (jshint)
+
+
+* Link
+
+https://github.com/AxxL/dot_emacs

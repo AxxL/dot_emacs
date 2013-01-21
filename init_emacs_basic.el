@@ -57,6 +57,8 @@
    (yank)
    (newline)
    (forward-line -1)))
+;; set key binding for duplicate-line
+(global-set-key (kbd "C-c d") 'duplicate-line)
 
 ;; ,----
 ;; | Beenden mit Nachfrage

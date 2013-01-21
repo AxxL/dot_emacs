@@ -1,4 +1,29 @@
 ;; ,----
+;; | Markdown mode
+;; `----
+(autoload 'markdown-mode "markdown-mode.el"
+  "Major mode for editing Markdown files" t)
+(setq auto-mode-alist
+      (cons '("\\.md" . markdown-mode) auto-mode-alist))
+
+
+
+;; ,----
+;; | Autopair
+;; `----
+(add-to-list 'load-path "~/.emacs.d/autopair")
+(require 'autopair)
+(autopair-global-mode)
+
+;; ,----
+;; | nyan-mode
+;; `----
+(add-to-list 'load-path "~/.emacs.d/nyan-mode")
+(require 'nyan-mode)
+(nyan-mode)
+
+
+;; ,----
 ;; | IDO-Mode
 ;; | http://emacswiki.org/emacs/InteractivelyDoThings
 ;; `----
@@ -14,7 +39,7 @@
 ;; Turn off mouse interface early in startup to avoid momentary display
 ;; (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-;; (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
 ;; No splash screen please ... jeez
 (setq inhibit-startup-message t)
@@ -59,9 +84,13 @@
 ;; | SOME KEYS
 ;; `----
 ;; indent-region
-(global-set-key (quote [C-f10]) (quote indent-region))
+(global-set-key (kbd "C-M-ß") 'indent-region)
 ;; quote other window (default: C-x o)
 (global-set-key (quote [C-tab]) (quote other-window))
+;; USE: comment-dwim is bound to M-;.
+;; (global-set-key (kbd "C-'") 'comment-or-uncomment-region)
+;; (global-set-key (kbd "C-Ä") 'uncomment-region)
+
 
 ;; ,----
 ;; | Org-Mode Other Window

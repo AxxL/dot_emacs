@@ -35,7 +35,21 @@
 (global-set-key [f11] 'nav-toggle)
 
 
+;; ,----
+;; | TEST
+;; | HTML HELPER MODE
+;; `----
+;; (autoload 'html-helper-mode "html-helper-mode" "Yay HTML" t)
+;; To invoke html-helper-mode automatically on .html files, do this:
+;; (setq auto-mode-alist (cons '("\\.html$" . html-helper-mode) auto-mode-alist))
 
+
+;; ,----
+;; | TEST 
+;; | nXhtml MODE
+;; `----
+;; (load "~/.emacs.d/nxhtml/autostart.el")
+;; (tabkey2-mode 1)
 
 ;; ,----
 ;; | PROJECT MODE
@@ -43,17 +57,6 @@
 (require 'project-mode)
 (project-load-all) ; Loads all saved projects. Not required.
 
-
-;;,----
-;;| nXhtml MODE
-;;`----
-;; (load "~/.emacs.d/nxhtml/autostart.el")
-;; (tabkey2-mode 1)
-
-;; Completion normally M-Tab
-;; M-x tabkey2-mode
-;; Wrong colors in Mumamo
-;;  M-x mumamo-no-chunk-coloring
 ;; ,----
 ;; | FLYMAKE
 ;; `----
@@ -81,8 +84,6 @@
 
 ;; Turns on flymake for all files which have a flymake mode
 ;; (add-hook 'find-file-hook 'flymake-find-file-hook)
-
-
 (add-hook 'js-mode-hook
  	  (lambda ()
        (flymake-mode 1)
