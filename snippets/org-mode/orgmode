@@ -1,0 +1,6 @@
+# -*- coding: utf-8; mode: snippet -*-
+# name: org mode modeline
+# key: orgmodeline
+# contributor: AXS
+# --
+-*- mode:org -*-

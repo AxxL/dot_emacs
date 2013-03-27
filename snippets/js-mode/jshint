@@ -1,0 +1,6 @@
+# -*- coding: utf-8; mode: snippet -*-
+# name: jshint
+# key: jshint
+# contributor: axxl
+# --
+/*jshint evil:true, regexdash: true, wsh: true, sub: true, dojo: true, devel: true, browser: true, curly: true, eqeqeq: true, forin: true, immed: true, noempty: true, undef: true*/

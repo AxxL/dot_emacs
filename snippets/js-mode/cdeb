@@ -1,0 +1,6 @@
+# -*- coding: utf-8; mode: snippet -*-
+# name: console.debug()
+# key: cdeb
+# contributor: axxl
+# --
+console.debug($0);

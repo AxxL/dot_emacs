@@ -1,0 +1,6 @@
+# -*- coding: utf-8; mode: snippet -*-
+# name: console.log()
+# key: clog
+# contributor: axxl
+# --
+console.log($0);

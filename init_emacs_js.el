@@ -39,7 +39,7 @@
 ;; | TEST
 ;; | HTML HELPER MODE
 ;; `----
-;; (autoload 'html-helper-mode "html-helper-mode" "Yay HTML" t)
+(autoload 'html-helper-mode "html-helper-mode" "Yay HTML" t)
 ;; To invoke html-helper-mode automatically on .html files, do this:
 ;; (setq auto-mode-alist (cons '("\\.html$" . html-helper-mode) auto-mode-alist))
 
@@ -93,7 +93,7 @@
 ;; ,----
 ;; | AUTO-COMPLETE
 ;; `----
-(add-to-list 'load-path "~/.emacs.d/")
+;; (add-to-list 'load-path "~/.emacs.d/")
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)

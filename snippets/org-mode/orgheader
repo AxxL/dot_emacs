@@ -1,0 +1,14 @@
+# -*- coding: utf-8; mode: snippet -*-
+# name: org mode header
+# key: orgheader
+# contributor: AXS
+# --
+#+TITLE: Title
+#+AUTHOR: Name
+#+DATE: C-.
+#+DRAWERS: MAIL
+
+
+Local variables:
+mode: org
+end:

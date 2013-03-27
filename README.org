@@ -42,8 +42,6 @@ the future. Anyway, I think this list is nearly complete.
   - [[http://emacswiki.org/emacs/InteractivelyDoThings][IDO mode (Emacs Wiki link)]]
   - [[http://nyan-mode.buildsomethingamazing.com/][nyan mode]]
   - [[http://emacswiki.org/emacs/TabBarMode][tabbar (Emacs Wiki link)]]
-  - [[http://emacswiki.org/emacs/OrgMode][org-mode (Emacs Wiki link. It's included in newer Emacs but it's so
-    great I have to mention it.)]]
   - [[https://github.com/emacsmirror/multiple-cursors][multiple cursors]]
   - [[http://www.emacswiki.org/emacs/BoxQuote][boxquote (Emacs Wiki link)]]
   - [[http://emacswiki.org/emacs/ColorTheme][color theme (Emacs Wiki link)]]. I use the [[https://github.com/jimeh/birds-of-paradise-plus-theme.el][Birds of Paradise]] theme.
@@ -82,7 +80,7 @@ the future. Anyway, I think this list is nearly complete.
   - C-S-c C-S-c: =mc/edit-lines=
   - C-d: =mc/mark-next-like-this=
   - C-S-d: =mc/mark-previous-like-this=
-  - In js-mode: C-C C-n: =flymake-goto-next-error=
+  - In js-mode: C-c C-n: =flymake-goto-next-error=
 
 
 ** Things I've quit
@@ -93,9 +91,9 @@ the future. Anyway, I think this list is nearly complete.
 
 ** External stuff
 
-  - Python
-  - Bitstream Vera Sans Mono
-  - node.js (jshint)
+  - [[http://python.org/][Python]]
+  - [[http://en.wikipedia.org/wiki/Bitstream_Vera][Bitstream Vera Sans Mono]] (Wikipedia link. Downloadable from the [[http://www.gnome.org/][Gnome]] sources)
+  - [[http://nodejs.org/][node.js]] (especially [[http://www.jshint.com/][jshint]])
 
 
 * Link

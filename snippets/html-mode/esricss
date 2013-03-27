@@ -1,0 +1,7 @@
+# -*- coding: utf-8; mode: snippet -*-
+# name: esricss
+# key: esricss
+# contributor: AXS
+# --
+<link rel="stylesheet" href="http://linvers/arcgis_js_api/library/3.3/jsapi/js/dojo/dijit/themes/claro/claro.css">
+<link rel="stylesheet" href="http://linvers/arcgis_js_api/library/3.3/jsapi/js/esri/css/esri.css">

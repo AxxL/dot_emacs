@@ -61,6 +61,16 @@
 (global-set-key (kbd "C-c d") 'duplicate-line)
 
 ;; ,----
+;; | what-face
+;; | http://stackoverflow.com/questions/1242352/get-font-face-under-cursor-in-emacs
+;; `----
+(defun what-face (pos)
+  (interactive "d")
+  (let ((face (or (get-char-property (point) 'read-face-name)
+                  (get-char-property (point) 'face))))
+    (if face (message "Face: %s" face) (message "No face at %d" pos))))
+
+;; ,----
 ;; | Beenden mit Nachfrage
 ;; `----
 (setq kill-emacs-query-functions
@@ -86,41 +96,22 @@
 
  
 ;; ,----
-;; | Diary
+;; | Calendar and Diary
 ;; `----
-;;Fancy display
-
-;; Here is some code to make your calendar and diary display fancier:
-(setq view-diary-entries-initially t
-      mark-diary-entries-in-calendar t
+;;
+;; European calendar style, location (sunrise-sunset) and diary entries
+(setq calendar-date-style 'european
+      calendar-latitude 50.7
+      calendar-longitude 7.1
+      calendar-location-name "Bonn, NRW, GER"
+      calendar-mark-diary-entries-flag t
       number-of-diary-entries 7)
-(add-hook 'diary-display-hook 'fancy-diary-display)
+
 (add-hook 'today-visible-calendar-hook 'calendar-mark-today)
 
-;; Here is some code to get rid of the ugly equal signs under the date:
-(add-hook 'fancy-diary-display-mode-hook
-          '(lambda ()
-             (alt-clean-equal-signs)))
-
-(defun alt-clean-equal-signs ()
-  "This function makes lines of = signs invisible."
-  (goto-char (point-min))
-  (let ((state buffer-read-only))
-    (when state (setq buffer-read-only nil))
-    (while (not (eobp))
-      (search-forward-regexp "^=+$" nil 'move)
-      (add-text-properties (match-beginning 0) 
-                           (match-end 0) 
-                           '(invisible t)))
-    (when state (setq buffer-read-only t))))
-
-;; Diary Localization
-;; German
-
-;; Here's the code to make it all German. It changes the date format for
-;; your diary entries to European style, makes Monday the first day of the
-;; week, and changes weekday and month names.
-                                        ;(european-calendar)
+;; Diary Localization: German. Here's the code to make it all German. It
+;; changes the date format for your diary entries to European style, makes
+;; Monday the first day of the week, and changes weekday and month names.
 (setq calendar-week-start-day 1
       calendar-day-name-array
       ["Sonntag" "Montag" "Dienstag" "Mittwoch" 
@@ -130,10 +121,30 @@
        "Juni" "Juli" "August" "September" 
        "Oktober" "November" "Dezember"])
 
+;; Fancy Display
+; (add-hook 'diary-display-hook 'fancy-diary-display)
+
+;; Here is some code to get rid of the ugly equal signs under the date:
+;; (add-hook 'fancy-diary-display-mode-hook
+;;           '(lambda ()
+;;              (alt-clean-equal-signs)))
+
+;; (defun alt-clean-equal-signs ()
+;;   "This function makes lines of = signs invisible."
+;;   (goto-char (point-min))
+;;   (let ((state buffer-read-only))
+;;     (when state (setq buffer-read-only nil))
+;;     (while (not (eobp))
+;;       (search-forward-regexp "^=+$" nil 'move)
+;;       (add-text-properties (match-beginning 0) 
+;;                            (match-end 0) 
+;;                            '(invisible t)))
+;;     (when state (setq buffer-read-only t))))
+
+
 ;; ,----
 ;; | Boxquote
 ;; `----
-(add-to-list 'load-path "~/.emacs.d/")
 (require 'boxquote)
 
 ;; ,----
@@ -142,6 +153,12 @@
 (add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0/")
 (require 'color-theme)
 (require 'birds-of-paradise-plus-theme)
+
+;; the button seems not to work.
+(custom-theme-set-faces
+ 'birds-of-paradise-plus
+ `(button ((t (:background "#523D2B" :foreground "#D9D762" :underline t :weight bold))))
+)
 
 
 ;; ,----
