@@ -5,9 +5,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-;; ,----
-;; | UTF-8
-;; `----
+;; UTF-8
 ;; http://blog.jonnay.net/archives/820-Emacs-and-UTF-8-Encoding.html
 ;; set up unicode
 (prefer-coding-system 'utf-8)
@@ -19,12 +17,40 @@
 ;; From Emacs wiki
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 ;; MS Windows clipboard is UTF-16LE
-(set-clipboard-coding-system 'utf-16le-dos)
+;; (set-clipboard-coding-system 'utf-16le-dos)
 
 
-;; ,----
-;; | Query Replace in open Buffers
-;; `----
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; faces and fonts
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;; Color Themes
+(add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0/")
+(require 'color-theme)
+
+(require 'birds-of-paradise-plus-theme)
+;; the button seems not to work.
+(custom-theme-set-faces
+ 'birds-of-paradise-plus
+ `(button ((t (:background "#523D2B" :foreground "#D9D762" :underline t :weight bold))))
+)
+
+;; (require 'cyberpunk-theme)
+
+
+
+;; Highlight current line
+;; (global-hl-line-mode 1)
+;; To customize the background color
+;; (set-face-background 'hl-line "#330")
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; keys, commands and functions
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Query Replace in open Buffers
 (defun query-replace-in-open-buffers (arg1 arg2)
   "query-replace in open files"
   (interactive "sQuery Replace in open Buffers: \nsquery with: ")
@@ -42,9 +68,8 @@
      (buffer-list)))))
 
 
-;; ,----
-;; | Duplicate line
-;; `----
+
+;; Duplicate line
 (defun duplicate-line()
  "Duplicate line."
  (interactive)
@@ -60,33 +85,123 @@
 ;; set key binding for duplicate-line
 (global-set-key (kbd "C-c d") 'duplicate-line)
 
-;; ,----
-;; | what-face
-;; | http://stackoverflow.com/questions/1242352/get-font-face-under-cursor-in-emacs
-;; `----
+;; indent-region
+(global-set-key (kbd "C-M-ß") 'indent-region)
+;; quote other window (default: C-x o)
+(global-set-key (quote [C-tab]) (quote other-window))
+;; USE: comment-dwim is bound to M-;.
+;; (global-set-key (kbd "C-'") 'comment-or-uncomment-region)
+;; (global-set-key (kbd "C-Ä") 'uncomment-region)
+
+;; Unset C-tab for Org-Mode: Other Window
+(add-hook 'org-mode-hook
+          (lambda () 
+            (local-unset-key [C-tab])))
+
+
+;; C-a (home) movement
+;; http://news.slashdot.org/comments.pl?sid=1021471&cid=25675361
+;;
+;; Moves to beginning-of-line, or from there to the first non-whitespace
+;; character.  This takes a numeric prefix argument when not 1, it behaves
+;; exactly like \(move-beginning-of-line arg) instead.
+(defun dev-studio-beginning-of-line (arg)
+  (interactive "p")
+  (if (and (looking-at "^") (= arg 1))
+      (skip-chars-forward " \t") (move-beginning-of-line arg)))
+(global-set-key "\C-a" 'dev-studio-beginning-of-line)
+(global-set-key [home] 'dev-studio-beginning-of-line)
+
+
+;; Add Python to EXECPATH
+(add-to-list 'exec-path "c:/bin/Python27/ArcGIS10.1")
+
+;; pretty prints the selection on a json document
+;; uses python.
+;; adjust the python path and executable.
+;; see http://stackoverflow.com/questions/1548605/emacs-lisp-shell-command-on-region
+(defun pretty-print-json(&optional b e)
+  (interactive "r")
+  (shell-command-on-region b e "c:/Python27/ArcGISx6410.1/python -m json.tool" (current-buffer) t)
+)
+
+
+;; what-face
+;; http://stackoverflow.com/questions/1242352/get-font-face-under-cursor-in-emacs
 (defun what-face (pos)
   (interactive "d")
   (let ((face (or (get-char-property (point) 'read-face-name)
                   (get-char-property (point) 'face))))
     (if face (message "Face: %s" face) (message "No face at %d" pos))))
 
+
 ;; ,----
-;; | Beenden mit Nachfrage
+;; | Wikipedia Lookup
 ;; `----
+;; Looks up current word in Wikipedia in a browser.  If a region is
+;; active (a phrase), lookup hat phrase.
+;; http://ergoemacs.org/emacs/elisp_idioms.html
+(defun wikipedia-lookup ()
+  (interactive)
+  (let (myWord myUrl)
+    (setq myWord
+          (if (region-active-p)
+              (buffer-substring-no-properties (region-beginning) (region-end))
+            (thing-at-point 'symbol)))
+    (setq myUrl
+          (concat "http://de.wikipedia.org/wiki/Special:Search?search=" myWord))
+    (browse-url myUrl)))
+
+(defun leo-lookup ()
+  (interactive)
+  (let (myWord myUrl)
+    (setq myWord
+          (if (region-active-p)
+              (buffer-substring-no-properties (region-beginning) (region-end))
+            (thing-at-point 'symbol)))
+    (setq myUrl
+          (concat "http://dict.leo.org/?search=" myWord))
+    (browse-url myUrl)))
+
+(defun google-lookup ()
+  (interactive)
+  (let (myWord myUrl)
+    (setq myWord
+          (if (region-active-p)
+              (buffer-substring-no-properties (region-beginning) (region-end))
+            (thing-at-point 'symbol)))
+    (setq myUrl
+          (concat "http://www.google.de/search?q=" myWord))
+    (browse-url myUrl)))
+
+
+(defun arcgis-lookup ()
+  (interactive)
+  (let (myWord myUrl)
+    (setq myWord
+          (if (region-active-p)
+              (buffer-substring-no-properties (region-beginning) (region-end))
+            (thing-at-point 'symbol)))
+    (setq myUrl
+          (concat "http://www.google.de/search?q=site:arcgis.com " myWord))
+    (browse-url myUrl)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; modes, customizations and other stuff
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Beenden mit Nachfrage
 (setq kill-emacs-query-functions
       (cons (lambda () (y-or-n-p "Quit Emacs? "))
             kill-emacs-query-functions))
 
-;; ,----
-;; | Titlebar mit Dateiname
-;; `----
 
+;; Titlebar mit Dateiname
 (setq frame-title-format (concat "%f (%b) - %F " emacs-version))
 
-;; ,----
-;; |  Menu
-;; `----
 
+;; Menu
 (require 'easymenu) 
 (easy-menu-add-item nil 
                     (list (if (>= emacs-major-version 22) "Tools" "tools")) 
@@ -94,11 +209,78 @@
                       ["Kill rectangle" kill-rectangle t] 
                       ["Sort lines" sort-lines t]))
 
- 
+
+;; ERC
+(setq erc-hide-list '("JOIN" "PART" "QUIT"))
+
+
+;; https://github.com/roman/golden-ratio.el/
+(require 'golden-ratio)
+(golden-ratio-mode 1)
+
 ;; ,----
-;; | Calendar and Diary
+;; | IDO-Mode
+;; | http://emacswiki.org/emacs/InteractivelyDoThings
 ;; `----
-;;
+(require 'ido)
+(ido-mode t)
+(setq ido-enable-flex-matching t)
+
+
+;; icomplete mode
+(setq icomplete-mode t)
+
+
+;; Speedbar, sr-speedbar
+(require 'sr-speedbar)
+'(speedbar-show-unknown-files t)
+'(speedbar-use-images nil)
+(global-set-key (quote [f11]) 'sr-speedbar-toggle)
+
+
+
+;; CamelCase aware editing: enable for all programming modes
+;; http://emacsredux.com/blog/2013/04/21/camelcase-aware-editing/
+(add-hook 'prog-mode-hook 'subword-mode)
+
+
+
+;; MULTIPLE CURSORS
+;; new in 1.2.1: 
+;; Reverse the lines in the regions: Ctrl+~
+;; Sort the regions: Meta+~
+;; Insert line numbers: 【Hyper+~】
+(add-to-list 'load-path "~/.emacs.d/multiple-cursors/")
+(require 'multiple-cursors)
+
+;; When you have an active region that spans multiple lines, the following
+;; will add a cursor to each line:
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+
+;; When you want to add multiple cursors not based on continuous lines, but
+;; based on keywords in the buffer, use:
+(global-set-key (kbd "C-d") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-S-d") 'mc/mark-previous-like-this)
+;; (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+;; (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+;; (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+
+;; Markdown mode
+(autoload 'markdown-mode "markdown-mode.el"
+  "Major mode for editing Markdown files" t)
+(setq auto-mode-alist
+      (cons '("\\.md" . markdown-mode) auto-mode-alist))
+
+
+
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;; Calendar and Diary
 ;; European calendar style, location (sunrise-sunset) and diary entries
 (setq calendar-date-style 'european
       calendar-latitude 50.7
@@ -117,7 +299,7 @@
       ["Sonntag" "Montag" "Dienstag" "Mittwoch" 
        "Donnerstag" "Freitag" "Samstag"]
       calendar-month-name-array
-      ["Januar" "Februar" "M�rz" "April" "Mai" 
+      ["Januar" "Februar" "März" "April" "Mai" 
        "Juni" "Juli" "August" "September" 
        "Oktober" "November" "Dezember"])
 
@@ -142,32 +324,14 @@
 ;;     (when state (setq buffer-read-only t))))
 
 
-;; ,----
-;; | Boxquote
-;; `----
-(require 'boxquote)
-
-;; ,----
-;; | Color Themes
-;; `----
-(add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0/")
-(require 'color-theme)
-(require 'birds-of-paradise-plus-theme)
-
-;; the button seems not to work.
-(custom-theme-set-faces
- 'birds-of-paradise-plus
- `(button ((t (:background "#523D2B" :foreground "#D9D762" :underline t :weight bold))))
-)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-;; ,----
-;; | ASPELL
-;; `----
+;; Aspell
 ;; (setq-default ispell-program-name "aspell")
 (setq ispell-program-name "aspell") 
 
-;; alist leeren und f�r aspell /de_DE.UTF-8 richtig eingestellen: 
+;; alist leeren und für aspell /de_DE.UTF-8 richtig eingestellen: 
 (setq ispell-local-dictionary-alist nil) 
 (add-to-list 'ispell-local-dictionary-alist 
 	     '("deutsch8" 

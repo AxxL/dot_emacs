@@ -3,12 +3,8 @@
 # key: orgheader
 # contributor: AXS
 # --
+-*- mode:org -*-
 #+TITLE: Title
 #+AUTHOR: Name
 #+DATE: C-.
 #+DRAWERS: MAIL
-
-
-Local variables:
-mode: org
-end:
