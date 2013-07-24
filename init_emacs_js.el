@@ -87,7 +87,8 @@
 (add-hook 'js-mode-hook
  	  (lambda ()
        (flymake-mode 1)
-       (define-key js-mode-map "\C-c\C-n" 'flymake-goto-next-error)))
+       (define-key js-mode-map "\C-c\C-n" 'flymake-goto-next-error)
+       (define-key js-mode-map "\C-c\C-p" 'flymake-goto-prev-error)))
 
 
 ;; ,----

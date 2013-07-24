@@ -25,18 +25,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-;; Color Themes
-(add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0/")
-(require 'color-theme)
-
-(require 'birds-of-paradise-plus-theme)
-;; the button seems not to work.
-(custom-theme-set-faces
- 'birds-of-paradise-plus
- `(button ((t (:background "#523D2B" :foreground "#D9D762" :underline t :weight bold))))
-)
-
-;; (require 'cyberpunk-theme)
 
 
 
@@ -89,6 +77,14 @@
 (global-set-key (kbd "C-M-ß") 'indent-region)
 ;; quote other window (default: C-x o)
 (global-set-key (quote [C-tab]) (quote other-window))
+(defun back-window ()
+  (interactive)
+  (other-window -1))
+(global-set-key (quote [S-tab]) (quote back-window))
+
+;; next-/previous-multiframe-windows doesn't work with Golden Mode
+;; (global-set-key (quote [C-tab]) (quote next-multiframe-window))
+;; (global-set-key (quote [S-tab]) (quote previous-multiframe-window))
 ;; USE: comment-dwim is bound to M-;.
 ;; (global-set-key (kbd "C-'") 'comment-or-uncomment-region)
 ;; (global-set-key (kbd "C-Ä") 'uncomment-region)
