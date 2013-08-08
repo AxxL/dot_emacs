@@ -1,0 +1,6 @@
+# -*- coding: utf-8; mode: snippet -*-
+# name: esrijs35
+# key: esrijs35
+# contributor: AXS
+# --
+<script src="http://linvers/arcgis_js_api/library/3.5/"></script>

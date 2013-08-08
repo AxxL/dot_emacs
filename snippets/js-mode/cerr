@@ -1,0 +1,6 @@
+# -*- coding: utf-8; mode: snippet -*-
+# name: console.error()
+# key: cerr
+# contributor: axxl
+# --
+console.error($0);

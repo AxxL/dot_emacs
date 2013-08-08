@@ -1,0 +1,6 @@
+# -*- coding: utf-8; mode: snippet -*-
+# name: console.info()
+# key: cinfo
+# contributor: axxl
+# --
+console.info($0);

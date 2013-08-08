@@ -3,5 +3,5 @@
 # key: esricss
 # contributor: AXS
 # --
-<link rel="stylesheet" href="http://linvers/arcgis_js_api/library/3.5/js/dojo/dijit/themes/claro/claro.css">
-<link rel="stylesheet" href="http://linvers/arcgis_js_api/library/3.5/js/esri/css/esri.css">
+<link rel="stylesheet" href="http://js.arcgis.com/3.6/js/dojo/dijit/themes/claro/claro.css">
+<link rel="stylesheet" href="http://js.arcgis.com/3.6/js/esri/css/esri.css">

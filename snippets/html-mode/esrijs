@@ -3,4 +3,4 @@
 # key: esrijs
 # contributor: AXS
 # --
-<script src="http://linvers/arcgis_js_api/library/3.5/"></script>
+<script src="http://js.arcgis.com/3.6/"></script>
