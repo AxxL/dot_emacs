@@ -28,11 +28,11 @@
 ;; ,----
 ;; | NAV
 ;; `----
-(add-to-list 'load-path "~/.emacs.d/emacs-nav-49/")
-(require 'nav)
-(nav-disable-overeager-window-splitting)
-;; Optional: set up a quick key to toggle nav
-;; (global-set-key [f11] 'nav-toggle)
+;; (add-to-list 'load-path "~/.emacs.d/emacs-nav-49/")
+;; (require 'nav)
+;; (nav-disable-overeager-window-splitting)
+;; ;; Optional: set up a quick key to toggle nav
+;; ;; (global-set-key [f11] 'nav-toggle)
 
 
 ;; ,----
@@ -43,13 +43,6 @@
 ;; To invoke html-helper-mode automatically on .html files, do this:
 ;; (setq auto-mode-alist (cons '("\\.html$" . html-helper-mode) auto-mode-alist))
 
-
-;; ,----
-;; | TEST 
-;; | nXhtml MODE
-;; `----
-;; (load "~/.emacs.d/nxhtml/autostart.el")
-;; (tabkey2-mode 1)
 
 ;; ,----
 ;; | PROJECT MODE
@@ -91,20 +84,26 @@
        (define-key js-mode-map "\C-c\C-p" 'flymake-goto-prev-error)))
 
 
+(add-hook 'js3-mode-hook
+ 	  (lambda ()
+       (flymake-mode 1)
+       (define-key js-mode-map "\C-c\C-n" 'flymake-goto-next-error)
+       (define-key js-mode-map "\C-c\C-p" 'flymake-goto-prev-error)))
+
+
 ;; ,----
 ;; | AUTO-COMPLETE
 ;; `----
 ;; (add-to-list 'load-path "~/.emacs.d/")
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+;; (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
-
 
 ;; ,----
 ;; | YASNIPPET
 ;; `----
 ;; installed by M-x list-packkages
-(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-0.8.0")
+;; (add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-0.8.0")
 (require 'yasnippet)
 (yas-global-mode 1)
 ;; Let's have snippets in the auto-complete dropdown

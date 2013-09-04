@@ -20,19 +20,10 @@
 ;; (set-clipboard-coding-system 'utf-16le-dos)
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; faces and fonts
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-
-
-
 ;; Highlight current line
 ;; (global-hl-line-mode 1)
 ;; To customize the background color
 ;; (set-face-background 'hl-line "#330")
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; keys, commands and functions
@@ -74,7 +65,7 @@
 (global-set-key (kbd "C-c d") 'duplicate-line)
 
 ;; indent-region
-(global-set-key (kbd "C-M-√ü") 'indent-region)
+(global-set-key (kbd "C-M-ﬂ") 'indent-region)
 ;; quote other window (default: C-x o)
 (global-set-key (quote [C-tab]) (quote other-window))
 (defun back-window ()
@@ -87,7 +78,7 @@
 ;; (global-set-key (quote [S-tab]) (quote previous-multiframe-window))
 ;; USE: comment-dwim is bound to M-;.
 ;; (global-set-key (kbd "C-'") 'comment-or-uncomment-region)
-;; (global-set-key (kbd "C-√Ñ") 'uncomment-region)
+;; (global-set-key (kbd "C-ƒ") 'uncomment-region)
 
 ;; Unset C-tab for Org-Mode: Other Window
 (add-hook 'org-mode-hook
@@ -245,7 +236,7 @@
 ;; new in 1.2.1: 
 ;; Reverse the lines in the regions: Ctrl+~
 ;; Sort the regions: Meta+~
-;; Insert line numbers: „ÄêHyper+~„Äë
+;; Insert line numbers: ?Hyper+~?
 (add-to-list 'load-path "~/.emacs.d/multiple-cursors/")
 (require 'multiple-cursors)
 
@@ -263,13 +254,12 @@
 
 
 ;; Markdown mode
-(autoload 'markdown-mode "markdown-mode.el"
+(autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
-(setq auto-mode-alist
-      (cons '("\\.md" . markdown-mode) auto-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
-
-
+;; Boxquote
+(require 'boxquote)
 
 
 
@@ -295,7 +285,7 @@
       ["Sonntag" "Montag" "Dienstag" "Mittwoch" 
        "Donnerstag" "Freitag" "Samstag"]
       calendar-month-name-array
-      ["Januar" "Februar" "M√§rz" "April" "Mai" 
+      ["Januar" "Februar" "M‰rz" "April" "Mai" 
        "Juni" "Juli" "August" "September" 
        "Oktober" "November" "Dezember"])
 
@@ -327,7 +317,7 @@
 ;; (setq-default ispell-program-name "aspell")
 (setq ispell-program-name "aspell") 
 
-;; alist leeren und f√ºr aspell /de_DE.UTF-8 richtig eingestellen: 
+;; alist leeren und f¸r aspell /de_DE.UTF-8 richtig eingestellen: 
 (setq ispell-local-dictionary-alist nil) 
 (add-to-list 'ispell-local-dictionary-alist 
 	     '("deutsch8" 
