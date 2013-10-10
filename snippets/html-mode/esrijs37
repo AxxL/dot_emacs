@@ -1,6 +1,6 @@
 # -*- coding: utf-8; mode: snippet -*-
-# name: esrijs
-# key: esrijs
+# name: esrijs37
+# key: esrijs37
 # contributor: AXS
 # --
 <script src="http://js.arcgis.com/3.7/"></script>

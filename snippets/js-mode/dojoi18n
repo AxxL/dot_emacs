@@ -1,0 +1,21 @@
+# -*- coding: utf-8; mode: snippet -*-
+# name: dojoi18n
+# key: dojoi18n
+# contributor: axxl
+# --
+// nls/resources.js
+define({
+    root : ({
+        foo: {
+            bar: "baz",
+        }
+    }),
+    "de": true
+});
+$0
+// nls/de/resources.js
+define({
+    foo: {
+        bar: "de baz",
+    }
+});

@@ -1,0 +1,21 @@
+# -*- coding: utf-8; mode: snippet -*-
+# name: dojoclass
+# key: dojoclass
+# contributor: axxl
+# --
+// @formatter:off
+define(["dojo/_base/declare",
+        "dijit/_WidgetBase",
+        // -- dojo dijit without params --
+        "dojo/domReady!"],
+function(declare,
+         _WidgetBase) {
+    // @formatter:on
+    return declare([_WidgetBase], {
+        variable: null,
+        constructor: function(args) {
+            this.variable = args.variable;
+            $0
+        }
+    });
+});

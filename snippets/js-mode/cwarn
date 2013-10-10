@@ -1,0 +1,6 @@
+# -*- coding: utf-8; mode: snippet -*-
+# name: console.warn()
+# key: cwarn
+# contributor: axxl
+# --
+console.warn($0);

@@ -1,0 +1,19 @@
+# -*- coding: utf-8; mode: snippet -*-
+# name: dojosingleton
+# key: dojosingleton
+# contributor: axxl
+# --
+// @formatter:off
+define(["dojo/_base/declare",
+        "dojo/parser"],
+function(declare,
+         parser) {
+    // @formatter:on
+    return {
+        _href : null,
+        startup : function() {         
+            parser.parse();
+            this._href = window.location.href;
+        }$0
+    };
+});

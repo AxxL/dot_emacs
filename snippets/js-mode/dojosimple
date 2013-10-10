@@ -1,0 +1,12 @@
+# -*- coding: utf-8; mode: snippet -*-
+# name: dojosimple
+# key: dojosimple
+# contributor: axxl
+# --
+// @formatter:off
+var ;
+require(["dojo/domReady!"],
+function() {
+    // @formatter:on 
+$0
+});
