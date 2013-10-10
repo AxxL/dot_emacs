@@ -19,7 +19,6 @@
  '(load-home-init-file t t)
  '(make-backup-files t)
  '(mm-text-html-renderer (quote html2text))
- '(require-final-newline t)
  '(show-paren-mode 1)
  '(show-paren-style (quote mixed))
  '(speedbar-show-unknown-files t)

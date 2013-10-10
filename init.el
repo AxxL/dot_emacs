@@ -35,8 +35,8 @@
 
       (set-face-attribute 'default nil :font "Bitstream Vera Sans Mono")
       ;; Color Themes
-      ;; (load-theme 'cyberpunk t)
-      (load-theme 'birds-of-paradise-plus t)
+      (load-theme 'cyberpunk t)
+      ;; (load-theme 'birds-of-paradise-plus t)
       ) ; progn
 )
 
@@ -95,3 +95,19 @@ by using nxml's indentation rules."
     (indent-region begin end nil)
     (normal-mode))
   (message "All indented!"))
+
+
+;; &lt; to < and &gt; to >
+;; http://ergoemacs.org/emacs/elisp_replace_string_region.html
+(defun replace-html-anti-chars-region (start end)
+  (interactive "r")
+  (replace-pairs-region start end
+                        '(
+                          ["&amp;" "&"]
+                          ["&lt;" "<"]
+                          ["&gt;" ">"]
+                          )))
+
+;; Autopair
+;;   (require 'autopair)
+(autopair-global-mode) ;; to enable in all buffers
