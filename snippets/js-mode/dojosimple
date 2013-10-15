@@ -4,9 +4,24 @@
 # contributor: axxl
 # --
 // @formatter:off
-var ;
-require(["dojo/domReady!"],
-function() {
+require(["dojo/ready",
+         "dojo/parser",
+         "dojo/dom",
+         "dojo/on",
+         "dojo/_base/array",
+         // -- esri --
+         "esri/map",
+         // -- dojo without params --
+         "dojo/domReady!"],
+function(ready,
+         parser,
+         dom,
+         on,
+         array,
+         Map) {
     // @formatter:on 
-$0
+    ready(function() {
+        parser.parse();
+        $0        
+    });
 });
