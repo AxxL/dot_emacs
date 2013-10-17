@@ -111,3 +111,11 @@ by using nxml's indentation rules."
 ;; Autopair
 ;;   (require 'autopair)
 (autopair-global-mode) ;; to enable in all buffers
+
+
+;; Markdown mode playalong
+;; (defun markdown2html(&optional b e)
+;;   (interactive "r")
+;;   (shell-command "c:/bin/cygwin/bin/perl.exe" (current-buffer) (concat default-directory "Readme.html"))
+;; )
+
