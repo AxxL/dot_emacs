@@ -4,6 +4,14 @@
 ; local-unset-key tab
 ; local-set-key S-tab org-cycle
 
+;; (setq-default cursor-type 'bar)
+;; (setq-default cursor-type 'box)
+
+;; http://stackoverflow.com/questions/2007329/emacs-23-1-50-1-hangs-ramdomly-for-6-8-seconds-on-windows-xp
+
+; try to improve slow performance on windows.
+(setq w32-get-true-file-attributes nil)
+
 
 ;; JS3 mode
 (add-to-list 'load-path "~/.emacs.d/js3-mode-master/")
@@ -35,7 +43,11 @@
 
       (set-face-attribute 'default nil :font "Bitstream Vera Sans Mono")
       ;; Color Themes
-      (load-theme 'cyberpunk t)
+      ;; (load-theme 'monokai t)
+      (load-theme 'cyberpunkaxxl t)
+      ;; (load-theme 'cyberpunk t)
+      ;; (load-theme 'zenburn t)
+      ;; (load-theme 'solarized-dark t)
       ;; (load-theme 'birds-of-paradise-plus t)
       ) ; progn
 )
@@ -108,9 +120,10 @@ by using nxml's indentation rules."
                           ["&gt;" ">"]
                           )))
 
-;; Autopair
+(electric-pair-mode 1)
+;; Autopair siehe elctric pair mode
 ;;   (require 'autopair)
-(autopair-global-mode) ;; to enable in all buffers
+;; (autopair-global-mode) ;; to enable in all buffers
 
 
 ;; Markdown mode playalong
@@ -118,4 +131,4 @@ by using nxml's indentation rules."
 ;;   (interactive "r")
 ;;   (shell-command "c:/bin/cygwin/bin/perl.exe" (current-buffer) (concat default-directory "Readme.html"))
 ;; )
-
+;; (global-hl-line-mode 1)

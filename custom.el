@@ -4,7 +4,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(backup-directory-alist (quote (("." . "~/.emacs.d/.backups"))))
- '(blink-cursor-mode nil nil (frame))
  '(case-fold-search t)
  '(column-number-mode t)
  '(current-language-environment "German")
@@ -19,11 +18,13 @@
  '(load-home-init-file t t)
  '(make-backup-files t)
  '(mm-text-html-renderer (quote html2text))
- '(show-paren-mode 1)
+ '(require-final-newline t)
+ '(show-paren-mode t)
  '(show-paren-style (quote mixed))
  '(speedbar-show-unknown-files t)
  '(speedbar-use-images nil)
- '(tab-width 4))
+ '(tab-width 4)
+ '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
