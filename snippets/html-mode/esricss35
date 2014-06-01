@@ -1,7 +1,0 @@
-# -*- coding: utf-8; mode: snippet -*-
-# name: esricss35
-# key: esricss35
-# contributor: AXS
-# --
-<link rel="stylesheet" href="http://linvers/arcgis_js_api/library/3.5/3.5/js/dojo/dijit/themes/claro/claro.css">
-<link rel="stylesheet" href="http://linvers/arcgis_js_api/library/3.5/3.5/js/esri/css/esri.css">

@@ -9,9 +9,9 @@
 ;; ,----
 ;; | Open HTML with Firefox as default
 ;; `----
-(setq browse-url-firefox-program "C:/Program Files (x86)/Mozilla Firefox/firefox.exe")
-(setq browse-url-generic-program "C:/Program Files (x86)/Mozilla Firefox/firefox.exe"
-      browse-url-browser-function 'browse-url-generic) 
+;; (setq browse-url-firefox-program "C:/Program Files (x86)/Mozilla Firefox/firefox.exe")
+;; (setq browse-url-generic-program "C:/Program Files (x86)/Mozilla Firefox/firefox.exe"
+;;       browse-url-browser-function 'browse-url-generic) 
 
 ;; ,----
 ;; | BROWSE URL WITH URL NOT FILE PATH IN BROWSER
@@ -47,8 +47,15 @@
 ;; ,----
 ;; | PROJECT MODE
 ;; `----
-(require 'project-mode)
-(project-load-all) ; Loads all saved projects. Not required.
+;; (require 'project-mode)
+;; (project-load-all) ; Loads all saved projects. Not required.
+
+;; ,----
+;; | PROJECTILE
+;; `----
+(projectile-global-mode)
+
+
 
 ;; ,----
 ;; | FLYMAKE

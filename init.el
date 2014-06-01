@@ -12,10 +12,16 @@
 ; try to improve slow performance on windows.
 (setq w32-get-true-file-attributes nil)
 
+(require 'tramp)
+(defun sudo-find-file (file-name)
+  "Like find file, but opens the file as root."
+  (interactive "FSudo Find File: ")
+  (let ((tramp-file-name (concat "/sudo::" (expand-file-name file-name))))
+    (find-file tramp-file-name)))
 
 ;; JS3 mode
-(add-to-list 'load-path "~/.emacs.d/js3-mode-master/")
-(autoload 'js3-mode "js3" nil t)
+;; (add-to-list 'load-path "~/.emacs.d/js3-mode-master/")
+;; (autoload 'js3-mode "js3" nil t)
 
 
 ;; empty kill ring manually
@@ -24,6 +30,8 @@
 
 ;; No splash screen please ... jeez
 (setq inhibit-startup-message t)
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
 ; Melpa
 (require 'package)
@@ -37,20 +45,18 @@
       ;; Turn off mouse interface early in startup to avoid momentary display
       ;; http://whattheemacsd.com/init.el-01.html 
       ;; (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-      (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-      (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-
-
-      (set-face-attribute 'default nil :font "Bitstream Vera Sans Mono")
-      ;; Color Themes
-      ;; (load-theme 'monokai t)
-      (load-theme 'cyberpunkaxxl t)
+      ;; (load-theme 'cyberpunkaxxl t)
       ;; (load-theme 'cyberpunk t)
       ;; (load-theme 'zenburn t)
       ;; (load-theme 'solarized-dark t)
       ;; (load-theme 'birds-of-paradise-plus t)
       ) ; progn
-)
+  (progn
+    (set-face-attribute 'default nil :font "Bitstream Vera Sans Mono" :height 95)
+    ;; Color Themes
+    (load-theme 'monokai t)
+    )
+  )
 
 
 ;; Load external files
@@ -132,3 +138,45 @@ by using nxml's indentation rules."
 ;;   (shell-command "c:/bin/cygwin/bin/perl.exe" (current-buffer) (concat default-directory "Readme.html"))
 ;; )
 ;; (global-hl-line-mode 1)
+
+
+;; SQLi
+;; http://www.emacswiki.org/emacs/SqlMode
+(defvar sql-last-prompt-pos 1
+  "position of last prompt when added recording started")
+(make-variable-buffer-local 'sql-last-prompt-pos)
+(put 'sql-last-prompt-pos 'permanent-local t)
+
+(defun sql-add-newline-first (output)
+  "Add newline to beginning of OUTPUT for
+   `comint-preoutput-filter-functions' This fixes up the display
+   of queries sent to the inferior buffer programatically."
+  (let ((begin-of-prompt
+         (or (and comint-last-prompt-overlay
+                  ;; sometimes this overlay is not on prompt
+                  (save-excursion
+                    (goto-char (overlay-start comint-last-prompt-overlay))
+                    (looking-at-p comint-prompt-regexp)
+                    (point)))
+             1)))
+    (if (> begin-of-prompt sql-last-prompt-pos)
+        (progn
+          (setq sql-last-prompt-pos begin-of-prompt)
+          (concat "\n" output))
+      output)))
+
+(defun sqli-add-hooks ()
+  "Add hooks to `sql-interactive-mode-hook'."
+  (add-hook 'comint-preoutput-filter-functions
+            'sql-add-newline-first))
+ 
+(add-hook 'sql-interactive-mode-hook 'sqli-add-hooks)
+
+
+;; ,----
+;; | SUBLIMITY
+;; `----
+;; (require 'sublimity)
+;; (require 'sublimity-scroll)
+;; (require 'sublimity-map)
+;; ;; (require 'sublimity-attractive)

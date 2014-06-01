@@ -4,11 +4,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(backup-directory-alist (quote (("." . "~/.emacs.d/.backups"))))
+ '(blink-cursor-mode nil)
  '(case-fold-search t)
  '(column-number-mode t)
  '(current-language-environment "German")
  '(default-input-method "german-postfix")
- '(exec-path (quote ("c:/bin/Python27/ArcGIS10.1" "c:/Windows/system32" "C:/Windows" "C:/Windows/System32/Wbem" "C:/Program Files/Microsoft Network Monitor 3/" "C:/Program Files (x86)/Microsoft SQL Server/100/Tools/Binn/" "C:/Program Files/Microsoft SQL Server/100/Tools/Binn/" "C:/Program Files/Microsoft SQL Server/100/DTS/Binn/" "C:/Program Files (x86)/Microsoft SQL Server/100/Tools/Binn/VSShell/Common7/IDE/" "C:/Program Files (x86)/Microsoft SQL Server/100/DTS/Binn/" "C:/Program Files (x86)/ArcGIS/EsriProductionMapping/Desktop10.1/Bin" "C:/Program Files/ArcGIS/ArcSDE/sqlexe/bin/" "C:/Program Files/nodejs/" "C:/Program Files/SlikSvn/bin" "C:/Windows/System32/WindowsPowerShell/v1.0/" "C:/Program Files/TortoiseSVN/bin" "C:/Users/axs/AppData/Roaming/npm/" "c:/Users/axs/bin/dev/curl/" "c:/bin/tools/Aspell/bin/" "c:/Program Files/SlikSvn/bin/" "c:/Users/axs/bin/edit/emacs/bin" "c:/Users/axs/bin/tools/infozip/" "c:/bin/cygwin/bin/")))
+;; '(exec-path (quote ("c:/bin/Python27/ArcGIS10.1" "c:/Windows/system32" "C:/Windows" "C:/Windows/System32/Wbem" "C:/Program Files/Microsoft Network Monitor 3/" "C:/Program Files (x86)/Microsoft SQL Server/100/Tools/Binn/" "C:/Program Files/Microsoft SQL Server/100/Tools/Binn/" "C:/Program Files/Microsoft SQL Server/100/DTS/Binn/" "C:/Program Files (x86)/Microsoft SQL Server/100/Tools/Binn/VSShell/Common7/IDE/" "C:/Program Files (x86)/Microsoft SQL Server/100/DTS/Binn/" "C:/Program Files (x86)/ArcGIS/EsriProductionMapping/Desktop10.1/Bin" "C:/Program Files/ArcGIS/ArcSDE/sqlexe/bin/" "C:/Program Files/nodejs/" "C:/Program Files/SlikSvn/bin" "C:/Windows/System32/WindowsPowerShell/v1.0/" "C:/Program Files/TortoiseSVN/bin" "C:/Users/axs/AppData/Roaming/npm/" "c:/Users/axs/bin/dev/curl/" "c:/bin/tools/Aspell/bin/" "c:/Program Files/SlikSvn/bin/" "c:/Users/axs/bin/edit/emacs/bin" "c:/Users/axs/bin/tools/infozip/" "c:/bin/cygwin/bin/")))
  '(fill-column 76)
  '(flymake-log-level 3)
  '(global-font-lock-mode t nil (font-lock))
