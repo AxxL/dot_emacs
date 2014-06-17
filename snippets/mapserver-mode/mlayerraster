@@ -1,0 +1,28 @@
+# -*- coding: utf-8; mode: snippet -*-
+# name: mlayerraster
+# key: mlayerraster
+# contributor: AXS
+# --
+
+    # begin layer
+    LAYER
+	    NAME "DTK 500"
+        TILEINDEX "./dtk500_kachelindex.shp"
+	    TYPE RASTER
+	    STATUS ON
+        
+	    METADATA
+		    WMS_SRS "epsg:25832"
+		    WMS_TITLE "DTK_500"
+            ows_keywordlist "DTK500,Germany,Deutschland,WMS,Demo"
+            wms_abstract "&copy GeoBasis-DE / BKG 2014"
+	    END
+  
+	    PROJECTION
+		    "init=epsg:25832"
+	    END
+
+        MAXSCALEDENOM 200000
+        MINSCALEDENOM 100000
+    END
+    # end layer

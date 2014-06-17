@@ -1,0 +1,30 @@
+# -*- coding: utf-8; mode: snippet -*-
+# name: mmap
+# key: mmap
+# contributor: AXS
+# --
+
+# begin map
+MAP
+    # Allgemeine Angaben zur MAP
+    NAME "mapname"
+    STATUS ON
+
+    EXTENT 2516438.410 5671903.377 2519958.410 5674103.695	
+    UNITS  meters
+    SIZE 500 400
+    MAXSIZE 3500
+
+    SHAPEPATH "data/"
+    SYMBOLSET "symbols/symbset.sym"
+    FONTSET   "fonts/fonts.fnt"	
+
+    PROJECTION
+	    "init=epsg:31466"
+    END
+
+    CONFIG "MS_ERRORFILE" "/tmp/ms_mapname_error.txt"
+    DEBUG 2
+
+END
+# end map

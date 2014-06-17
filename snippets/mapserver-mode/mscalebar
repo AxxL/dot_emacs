@@ -1,0 +1,21 @@
+# -*- coding: utf-8; mode: snippet -*-
+# name: mscalebar
+# key: mscalebar
+# contributor: AXS
+# --
+
+    # begin scalebar
+    SCALEBAR
+    	STATUS embed
+    	STYLE 1
+        INTERVALS 5
+        SIZE 300 10
+        UNITS meters
+        BACKGROUNDCOLOR 230 230 230
+        POSITION ur
+    	LABEL       
+    		COLOR 0 0 255
+    		SIZE SMALL
+    	END  
+    END
+    # end scalebar

@@ -1,0 +1,47 @@
+# -*- coding: utf-8; mode: snippet -*-
+# name: mlayer
+# key: mlayer
+# contributor: AXS
+# --
+
+    # begin layer
+    LAYER
+	    NAME "Flurstuecke"
+	    DATA "landuse"
+	    STATUS ON
+	    TYPE POLYGON
+        
+	    METADATA
+		    WMS_SRS "epsg:31466"
+		    WMS_TITLE "Flurstuecke"
+            ows_keywordlist "Schwalmtal,Germany,Deutschland,WMS,Demo"
+	    END
+  
+	    PROJECTION
+		    "init=epsg:31466"
+	    END
+
+	    CLASSITEM "Area"
+	    LABELITEM "landuse"
+        TEMPLATE "templates/flurstuecke.html"
+	    CLASS
+		    NAME "Flur"
+		    EXPRESSION /./
+		
+            STYLE
+            	COLOR 0 255 0
+            	OUTLINECOLOR 0 0 0 
+            END
+            
+            LABEL
+                TYPE truetype
+                FONT "arial"
+                SHADOWCOLOR 240 240 240
+                SIZE 10
+                MINSCALEDENOM 100
+                MAXSCALEDENOM 10000
+            END
+            
+	    END  
+    END  
+    # end layer

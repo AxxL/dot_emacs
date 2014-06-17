@@ -1,0 +1,40 @@
+# -*- coding: utf-8; mode: snippet -*-
+# name: mweb
+# key: mweb
+# contributor: AXS
+# --
+
+    # begin web
+    WEB	
+	    IMAGEPATH "/var/www/umn/tmp/"
+	    IMAGEURL "http://localhost/umn/tmp/"
+
+	    METADATA
+		    WMS_ONLINERESOURCE "http://localhost/cgi-bin/mapserv?map=/fullpathtomap/mapname.map"
+		    WMS_SRS "epsg:31466 epsg:31467 epsg:31468 epsg:4326"	
+		    WMS_ACCESSCONSTRAINTS "none"
+		    WMS_TITLE "Schwalmtal"
+		    WMS_FEATURE_INFO_MIME_TYPE "text/html"
+		    WMS_ABSTRACT "siehe ows_abstract"
+            WMS_ENABLE_REQUEST "*"
+            # OWS Metdata
+            ows_abstract "map abstract"
+            ows_keywordlist "Germany,Deutschland,WMS,Demo"
+            ows_fees "none"
+            ows_accessconstraints "none"
+            ows_addresstype "postal"
+            ows_address "Str. 0"
+            ows_city "Stadt"
+            ows_stateorprovince "Bundesland"
+            ows_postcode "Postleitzahl"
+            ows_country "Staat"
+            ows_contactperson "Name"
+            ows_contactinformation "Abteilung"
+            ows_contactorganization "Firma"
+            ows_contactposition "Position"
+            ows_contactelectronicmailaddress "mailadresse"
+            ows_contactfacsimiletelephone "12345"
+            ows_contactvoicetelephone "12345"
+	    END
+    END
+    # end web
