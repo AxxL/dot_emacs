@@ -17,6 +17,7 @@
 		    WMS_FEATURE_INFO_MIME_TYPE "text/html"
 		    WMS_ABSTRACT "siehe ows_abstract"
             WMS_ENABLE_REQUEST "*"
+            WMS_ENCODING "UTF-8"
             # OWS Metdata
             ows_abstract "map abstract"
             ows_keywordlist "Germany,Deutschland,WMS,Demo"

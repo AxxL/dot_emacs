@@ -1,0 +1,6 @@
+# -*- coding: utf-8; mode: snippet -*-
+# name: jquery script
+# key: jquery
+# contributor: axxl
+# --
+<script src="../apis/jquery/jquery-2.1.1.js"></script>

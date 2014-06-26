@@ -21,7 +21,9 @@
 ;; (add-to-list 'browse-url-filename-alist
 ;;  '("/var/www/cgi/files/" . "http://my.website.com/cgi?"))
 (setq browse-url-filename-alist
-      '(("C:/inetpub/wwwroot/" . "http://linvers/")))
+      '(("C:/inetpub/wwwroot/" . "http://mywindowsserver/")
+        ("/home/aschaefer/public_html/" . "http://localhost/~aschaefer/"))
+)
 (global-set-key (quote [C-f11]) 'browse-url-of-file)
 
 
@@ -67,7 +69,7 @@
            (local-file (file-relative-name
                         temp-file
                         (file-name-directory buffer-file-name))))
-      (list "jshint" (list local-file))))
+      (list "~/node_modules/jshint/bin/jshint" (list local-file))))
 
   (setq flymake-err-line-patterns
         ;; tester.js: line 23, col 15, Expected ':' and instead saw '='.

@@ -4,7 +4,7 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UTF-8
 ;; http://blog.jonnay.net/archives/820-Emacs-and-UTF-8-Encoding.html
 ;; set up unicode
@@ -64,6 +64,8 @@
 ;; set key binding for duplicate-line
 (global-set-key (kbd "C-c d") 'duplicate-line)
 
+
+
 ;; indent-region
 (global-set-key (kbd "C-M-ß") 'indent-region)
 ;; quote other window (default: C-x o)
@@ -80,12 +82,17 @@
 ;; (global-set-key (kbd "C-'") 'comment-or-uncomment-region)
 ;; (global-set-key (kbd "C-Ä") 'uncomment-region)
 
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Unset C-tab for Org-Mode: Other Window
 (add-hook 'org-mode-hook
           (lambda () 
             (local-unset-key [C-tab])))
 
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; C-a (home) movement
 ;; http://news.slashdot.org/comments.pl?sid=1021471&cid=25675361
 ;;
@@ -100,8 +107,21 @@
 (global-set-key [home] 'dev-studio-beginning-of-line)
 
 
+
+;; what-face
+;; http://stackoverflow.com/questions/1242352/get-font-face-under-cursor-in-emacs
+(defun what-face (pos)
+  (interactive "d")
+  (let ((face (or (get-char-property (point) 'read-face-name)
+                  (get-char-property (point) 'face))))
+    (if face (message "Face: %s" face) (message "No face at %d" pos))))
+
+
+
+
 ;; Add Python to EXECPATH
-(add-to-list 'exec-path "c:/bin/Python27/ArcGIS10.1")
+;; (add-to-list 'exec-path "c:/bin/Python27/ArcGIS10.1")
+
 
 ;; pretty prints the selection on a json document
 ;; uses python.
@@ -113,15 +133,96 @@
 )
 
 
-;; what-face
-;; http://stackoverflow.com/questions/1242352/get-font-face-under-cursor-in-emacs
-(defun what-face (pos)
-  (interactive "d")
-  (let ((face (or (get-char-property (point) 'read-face-name)
-                  (get-char-property (point) 'face))))
-    (if face (message "Face: %s" face) (message "No face at %d" pos))))
+;; pretty print xml region
+(defun pretty-print-xml-region (begin end)
+  "Pretty format XML markup in region. You need to have nxml-mode
+http://www.emacswiki.org/cgi-bin/wiki/NxmlMode installed to do
+this.  The function inserts linebreaks to separate tags that have
+nothing but whitespace between them.  It then indents the markup
+by using nxml's indentation rules."
+  (interactive "r")
+  (save-excursion
+    (nxml-mode)
+    (goto-char begin)
+    ;; split <foo><foo> or </foo><foo>, but not <foo></foo>
+    (while (search-forward-regexp ">[ \t]*<[^/]" end t)
+      (backward-char 2) (insert "\n") (incf end))
+    ;; split <foo/></foo> and </foo></foo>
+    (goto-char begin)
+    (while (search-forward-regexp "<.*?/.*?>[ \t]*<" end t)
+      (backward-char) (insert "\n") (incf end))
+    (indent-region begin end nil)
+    (normal-mode))
+  (message "All indented!"))
 
 
+;; &lt; to < and &gt; to >
+;; http://ergoemacs.org/emacs/elisp_replace_string_region.html
+(defun replace-html-anti-chars-region (start end)
+  (interactive "r")
+  (replace-pairs-region start end
+                        '(
+                          ["&amp;" "&"]
+                          ["&lt;" "<"]
+                          ["&gt;" ">"]
+                          )))
+
+
+
+(defun increment-number-at-point ()
+      (interactive)
+      (skip-chars-backward "0123456789")
+      (or (looking-at "[0123456789]+")
+          (error "No number at point"))
+      (replace-match (number-to-string (1+ (string-to-number (match-string 0))))))
+
+(defun decrement-number-at-point ()
+      (interactive)
+      (skip-chars-backward "0123456789")
+      (or (looking-at "[0123456789]+")
+          (error "No number at point"))
+      (replace-match (number-to-string (1- (string-to-number (match-string 0))))))
+
+;; (global-set-key (kbd "C-c +") 'increment-number-at-point) 
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; SQLi
+;; http://www.emacswiki.org/emacs/SqlMode
+(defvar sql-last-prompt-pos 1
+  "position of last prompt when added recording started")
+(make-variable-buffer-local 'sql-last-prompt-pos)
+(put 'sql-last-prompt-pos 'permanent-local t)
+
+(defun sql-add-newline-first (output)
+  "Add newline to beginning of OUTPUT for
+   `comint-preoutput-filter-functions' This fixes up the display
+   of queries sent to the inferior buffer programatically."
+  (let ((begin-of-prompt
+         (or (and comint-last-prompt-overlay
+                  ;; sometimes this overlay is not on prompt
+                  (save-excursion
+                    (goto-char (overlay-start comint-last-prompt-overlay))
+                    (looking-at-p comint-prompt-regexp)
+                    (point)))
+             1)))
+    (if (> begin-of-prompt sql-last-prompt-pos)
+        (progn
+          (setq sql-last-prompt-pos begin-of-prompt)
+          (concat "\n" output))
+      output)))
+
+(defun sqli-add-hooks ()
+  "Add hooks to `sql-interactive-mode-hook'."
+  (add-hook 'comint-preoutput-filter-functions
+            'sql-add-newline-first))
+ 
+(add-hook 'sql-interactive-mode-hook 'sqli-add-hooks)
+
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ,----
 ;; | Wikipedia Lookup
 ;; `----
@@ -188,6 +289,15 @@
 (setq frame-title-format (concat "%f (%b) - %F " emacs-version))
 
 
+;; Tramp
+(require 'tramp)
+(defun sudo-find-file (file-name)
+  "Like find file, but opens the file as root."
+  (interactive "FSudo Find File: ")
+  (let ((tramp-file-name (concat "/sudo::" (expand-file-name file-name))))
+    (find-file tramp-file-name)))
+
+
 ;; Menu
 (require 'easymenu) 
 (easy-menu-add-item nil 
@@ -197,26 +307,43 @@
                       ["Sort lines" sort-lines t]))
 
 
+
 ;; ERC
 (setq erc-hide-list '("JOIN" "PART" "QUIT"))
 
 
+
+;; electric pair mode (statt autopair-mode)
+(electric-pair-mode 1)
+
+
+
+;; icomplete mode
+(setq icomplete-mode t)
+
+
+
+;; CamelCase aware editing: enable for all programming modes
+;; http://emacsredux.com/blog/2013/04/21/camelcase-aware-editing/
+(add-hook 'prog-mode-hook 'subword-mode)
+
+
+;; IbufferMode
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
+
 ;; https://github.com/roman/golden-ratio.el/
-(require 'golden-ratio)
-(golden-ratio-mode 1)
+;; (require 'golden-ratio)
+;; (golden-ratio-mode 1)
 
-;; ,----
-;; | IDO-Mode
-;; | http://emacswiki.org/emacs/InteractivelyDoThings
-;; `----
-;; (require 'ido)
-;; (ido-mode t)
-;; (setq ido-enable-flex-matching t)
 
-;; ,----
-;; | FLX-IDO
-;; | https://github.com/lewang/flx
-;; `----
+
+;; Ido
+;; http://emacswiki.org/emacs/InteractivelyDoThings
+;; Alt: (require 'ido) (ido-mode t) (setq ido-enable-flex-matching t)
+
+;; flx-ido
+;; https://github.com/lewang/flx
 (require 'flx-ido)
 (ido-mode 1)
 (ido-everywhere 1)
@@ -224,9 +351,6 @@
 ;; disable ido faces to see flx highlights.
 ;; (setq ido-use-faces nil)
 
-
-;; icomplete mode
-(setq icomplete-mode t)
 
 
 ;; Speedbar, sr-speedbar
@@ -237,12 +361,6 @@
 
 
 
-;; CamelCase aware editing: enable for all programming modes
-;; http://emacsredux.com/blog/2013/04/21/camelcase-aware-editing/
-(add-hook 'prog-mode-hook 'subword-mode)
-
-
-
 ;; MULTIPLE CURSORS
 ;; new in 1.2.1: 
 ;; Reverse the lines in the regions: Ctrl+~
@@ -250,7 +368,6 @@
 ;; Insert line numbers: ?Hyper+~?
 (add-to-list 'load-path "~/.emacs.d/multiple-cursors/")
 (require 'multiple-cursors)
-
 ;; When you have an active region that spans multiple lines, the following
 ;; will add a cursor to each line:
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
@@ -264,6 +381,7 @@
 ;; (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 
+
 ;; Markdown mode
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
@@ -273,10 +391,28 @@
 (require 'boxquote)
 
 
+;; Emacs Powerline
+;; (add-to-list 'load-path "~/.emacs.d/emacs-powerline")
+;; (require 'powerline)
+
+;; You can choose between different arrow shapes:
+;; (setq powerline-arrow-shape 'arrow)   ;; the default
+;; (setq powerline-arrow-shape 'curve)   ;; give your mode-line curves
+;; (setq powerline-arrow-shape 'arrow14) ;; best for small fonts
+
+;; You can change the mode-line color using the standard method:
+;; (custom-set-faces
+;;  '(mode-line ((t (:foreground "#030303" :background "#bdbdbd" :box nil))))
+;;  '(mode-line-inactive ((t (:foreground "#f9f9f9" :background "#666666" :box nil)))))
+
+;;
+;; EMMS
+;;
+;; (emms-standard)
+;; (emms-default-players) 
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
 ;; Calendar and Diary
 ;; European calendar style, location (sunrise-sunset) and diary entries
 (setq calendar-date-style 'european
