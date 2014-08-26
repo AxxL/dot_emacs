@@ -47,37 +47,17 @@ available from MELPA.
   - [[http://cx4a.org/software/auto-complete/][auto-complete]]
   - [[https://github.com/capitaomorte/yasnippet][yasnippet]]
   - [[http://www.emacswiki.org/emacs/SrSpeedbar][sr-speedbar]]
-
-
-  2048-game
-  auto-complete
-  birds-of-paradise-plus
-  boxquote
-  dash               
-  epl                
-  flx                
-  flx-ido            
-  flymake-cursor     
-  golden-ratio       
-  markdown-mode      
-  monokai-theme      
-  multiple-cursors   
-  php-mode           
-  pkg-info           
-  popup              
-  projectile         
-  s                  
-  sr-speedbar        
-  web-mode           
-  yasnippet          
-
+  - flx                
+  - flx-ido            
+  - flymake-cursor     
+  - golden-ratio       
+  - markdown-mode      
 
 Internal modes:
 
   - electric-pair-mode
   - icomplete-mode
   - subword-mode
-  - 
 
 
 ** Own functions
@@ -130,6 +110,7 @@ I got these functions from various sources in the net. Thanks!
   - [[http://python.org/][Python]]
   - [[http://en.wikipedia.org/wiki/Bitstream_Vera][Bitstream Vera Sans Mono]] (Wikipedia link. Downloadable from the [[http://www.gnome.org/][Gnome]] sources)
   - [[http://nodejs.org/][node.js]] (especially [[http://www.jshint.com/][jshint]])
+
 
 * Modes that I don't use anymore
 
