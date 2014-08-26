@@ -8,7 +8,7 @@
 
 ;; empty kill ring manually
 ;; M-: (setq kill-ring nil)
-(add-to-list 'load-path "~/.emacs.d/")
+(add-to-list 'load-path "~/.emacs.d/lisp")
 
 ; Melpa
 (require 'package)
@@ -27,7 +27,7 @@
 ;; X or console?
 (if (display-graphic-p)
     (progn
-      (set-face-attribute 'default nil :font "Bitstream Vera Sans Mono" :height 95)
+      ;; (set-face-attribute 'default nil :font "Bitstream Vera Sans Mono" :height 95)
       ;; Color Themes
       (load-theme 'monokai t)
       ;; (load-theme 'cyberpunkaxxl t)
@@ -77,6 +77,7 @@
 ;; ,----
 ;; | mapserver-mode
 ;; `----
+(add-to-list 'load-path "~/.emacs.d/lisp/mapserver-emacs-mode/")
 (autoload 'mapserver-mode "mapserver-mode" "Mode for editing UMN MapServer files." t)
 (add-to-list 'auto-mode-alist '("\\.map\\'" . mapserver-mode))
 
@@ -93,7 +94,7 @@
 ;; ,----
 ;; | yaml mode
 ;; `----
-(add-to-list 'load-path "~/.emacs.d/yaml-mode/")
+(add-to-list 'load-path "~/.emacs.d/lisp/yaml-mode/")
 (require 'yaml-mode)
 
 
@@ -101,6 +102,17 @@
 ;; | F5 kills buffer
 ;; `----
 (global-set-key (kbd "<f5>") 'ido-kill-buffer)
+
+;; ,----
+;; | f6 join-line
+;; `----
+(global-set-key (kbd "<f6>") 'join-line)
+
+
+;; ,----
+;; | dead-circumflex ( ) dired-up-directory
+;; `----
+(global-set-key (kbd "<dead-circumflex>") 'dired-up-directory)
 
 
 ;; ,----
@@ -123,6 +135,10 @@
          (and (= a b) (= x y))) 2)
        (t 0))))) 
 
+;; org-mode (https://github.com/sachac/emacs-notes/blob/gh-pages/baby-steps-org.org)
+; (global-set-key (kbd "C-c a") 'org-agenda)
+; (org-agenda nil "a")
+
 ;; TODO ORG-MODE Keys
 ; auto-complete-mode
 ; local-unset-key S-tab
@@ -132,3 +148,18 @@
 ;; JS3 mode
 ;; (add-to-list 'load-path "~/.emacs.d/js3-mode-master/")
 ;; (autoload 'js3-mode "js3" nil t)
+
+
+;; ,----
+;; | CUA-MODE
+;; `----
+;; (cua-mode 1)
+
+
+;; ,----
+;; | HIGHLIGHT CURRENT LINE
+;; `----
+;; (global-hl-line-mode 1)
+
+(require 'simple-wiki)
+(add-to-list 'auto-mode-alist '("w3mtmp" . simple-wiki-mode))

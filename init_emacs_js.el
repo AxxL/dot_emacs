@@ -55,7 +55,7 @@
 ;; ,----
 ;; | PROJECTILE
 ;; `----
-(projectile-global-mode)
+;; (projectile-global-mode)
 
 
 

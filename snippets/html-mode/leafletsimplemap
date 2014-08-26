@@ -1,0 +1,40 @@
+# -*- coding: utf-8; mode: snippet -*-
+# name: leafletsimplemap
+# key: leafletsimplemap
+# contributor: AXS
+# --
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=7, IE=9, IE=10">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
+    <title>Leaflet Simple Map</title>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+
+    <style>
+     #map {
+       height: 400px;
+     }
+    </style>
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+     var wms = L.tileLayer.wms("http://osm-demo.wheregroup.com/service?", {
+       layers: "osm",
+       format: "image/png",
+       version: "1.3.0",
+       transparent: true,
+       attribution: "OSM (WhereGroup)"
+     });
+     
+     var map = L.map('map', {
+       center: [50.72, 7.12],
+       zoom: 13,
+       layers: [osmwms]
+     });
+    </script>
+  </body>
+</html> 

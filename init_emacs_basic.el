@@ -129,7 +129,7 @@
 ;; see http://stackoverflow.com/questions/1548605/emacs-lisp-shell-command-on-region
 (defun pretty-print-json(&optional b e)
   (interactive "r")
-  (shell-command-on-region b e "c:/Python27/ArcGISx6410.1/python -m json.tool" (current-buffer) t)
+  (shell-command-on-region b e "/usr/bin/python3 -m json.tool" (current-buffer) t)
 )
 
 
@@ -189,35 +189,35 @@ by using nxml's indentation rules."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; SQLi
 ;; http://www.emacswiki.org/emacs/SqlMode
-(defvar sql-last-prompt-pos 1
-  "position of last prompt when added recording started")
-(make-variable-buffer-local 'sql-last-prompt-pos)
-(put 'sql-last-prompt-pos 'permanent-local t)
+;; (defvar sql-last-prompt-pos 1
+;;   "position of last prompt when added recording started")
+;; (make-variable-buffer-local 'sql-last-prompt-pos)
+;; (put 'sql-last-prompt-pos 'permanent-local t)
 
-(defun sql-add-newline-first (output)
-  "Add newline to beginning of OUTPUT for
-   `comint-preoutput-filter-functions' This fixes up the display
-   of queries sent to the inferior buffer programatically."
-  (let ((begin-of-prompt
-         (or (and comint-last-prompt-overlay
-                  ;; sometimes this overlay is not on prompt
-                  (save-excursion
-                    (goto-char (overlay-start comint-last-prompt-overlay))
-                    (looking-at-p comint-prompt-regexp)
-                    (point)))
-             1)))
-    (if (> begin-of-prompt sql-last-prompt-pos)
-        (progn
-          (setq sql-last-prompt-pos begin-of-prompt)
-          (concat "\n" output))
-      output)))
+;; (defun sql-add-newline-first (output)
+;;   "Add newline to beginning of OUTPUT for
+;;    `comint-preoutput-filter-functions' This fixes up the display
+;;    of queries sent to the inferior buffer programatically."
+;;   (let ((begin-of-prompt
+;;          (or (and comint-last-prompt-overlay
+;;                   ;; sometimes this overlay is not on prompt
+;;                   (save-excursion
+;;                     (goto-char (overlay-start comint-last-prompt-overlay))
+;;                     (looking-at-p comint-prompt-regexp)
+;;                     (point)))
+;;              1)))
+;;     (if (> begin-of-prompt sql-last-prompt-pos)
+;;         (progn
+;;           (setq sql-last-prompt-pos begin-of-prompt)
+;;           (concat "\n" output))
+;;       output)))
 
-(defun sqli-add-hooks ()
-  "Add hooks to `sql-interactive-mode-hook'."
-  (add-hook 'comint-preoutput-filter-functions
-            'sql-add-newline-first))
+;; (defun sqli-add-hooks ()
+;;   "Add hooks to `sql-interactive-mode-hook'."
+;;   (add-hook 'comint-preoutput-filter-functions
+;;             'sql-add-newline-first))
  
-(add-hook 'sql-interactive-mode-hook 'sqli-add-hooks)
+;; (add-hook 'sql-interactive-mode-hook 'sqli-add-hooks)
 
 
 
@@ -470,7 +470,7 @@ by using nxml's indentation rules."
 	     '("deutsch8" 
  	       "[[:alpha:]]" "[^[:alpha:]]"
 	       "[']" t
-	       ("-C" "-d" "deutsch")
+	       ("-C" "-d" "de_DE-neu.multi")
  	        "~latin1" iso-8859-1)
  	     )
 
