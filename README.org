@@ -35,32 +35,68 @@ customization functionality of Emacs (=(load custom file)=),
 
 I use a lot of modes that have been accumulated over the years. I threw away
 some modes, and I'm still testing and I bet I will use some other modes in
-the future. Anyway, I think this list is nearly complete.
+the future. Anyway, I think this list is nearly complete. Most packages are
+available from MELPA.
 
   - [[http://jblevins.org/projects/markdown-mode/][markdown-mode]]
-  - [[https://github.com/capitaomorte/autopair][autopair]]
   - [[http://emacswiki.org/emacs/InteractivelyDoThings][IDO mode (Emacs Wiki link)]]
-  - [[http://nyan-mode.buildsomethingamazing.com/][nyan mode]]
-  - [[http://emacswiki.org/emacs/TabBarMode][tabbar (Emacs Wiki link)]]
   - [[https://github.com/emacsmirror/multiple-cursors][multiple cursors]]
   - [[http://www.emacswiki.org/emacs/BoxQuote][boxquote (Emacs Wiki link)]]
   - [[http://emacswiki.org/emacs/ColorTheme][color theme (Emacs Wiki link)]]. I use the [[https://github.com/jimeh/birds-of-paradise-plus-theme.el][Birds of Paradise]] theme.
-  - [[http://www.emacswiki.org/Nav][nav (Emacs Wiki link)]]
   - [[http://code.google.com/p/emacs-project-mode/][project mode]]
   - [[http://cx4a.org/software/auto-complete/][auto-complete]]
   - [[https://github.com/capitaomorte/yasnippet][yasnippet]]
+  - [[http://www.emacswiki.org/emacs/SrSpeedbar][sr-speedbar]]
+
+
+  2048-game
+  auto-complete
+  birds-of-paradise-plus
+  boxquote
+  dash               
+  epl                
+  flx                
+  flx-ido            
+  flymake-cursor     
+  golden-ratio       
+  markdown-mode      
+  monokai-theme      
+  multiple-cursors   
+  php-mode           
+  pkg-info           
+  popup              
+  projectile         
+  s                  
+  sr-speedbar        
+  web-mode           
+  yasnippet          
+
+
+Internal modes:
+
+  - electric-pair-mode
+  - icomplete-mode
+  - subword-mode
+  - 
 
 
 ** Own functions
+I got these functions from various sources in the net. Thanks!
+
   - =query-replace-in-open-buffers=
   - =duplicate-line=
   - =pretty-print-json=
+  - =pretty-print-xml-region=
+  - =dev-studio-beginning-of-line=
+  - =what-face=
+  - =replace-html-anti-chars-region=
+  - =increment-number-at-point= and =decrement-number-at-point=
+  - =wikipedia-lookup= and other lookups.
 
 
 ** Things I've switched off
   - tool bar mode
   - scroll bar mode
-
 
 ** Customizations
   - ERC
@@ -94,6 +130,14 @@ the future. Anyway, I think this list is nearly complete.
   - [[http://python.org/][Python]]
   - [[http://en.wikipedia.org/wiki/Bitstream_Vera][Bitstream Vera Sans Mono]] (Wikipedia link. Downloadable from the [[http://www.gnome.org/][Gnome]] sources)
   - [[http://nodejs.org/][node.js]] (especially [[http://www.jshint.com/][jshint]])
+
+* Modes that I don't use anymore
+
+  - [[https://github.com/capitaomorte/autopair][autopair]]
+  - [[http://nyan-mode.buildsomethingamazing.com/][nyan mode]]
+  - [[http://emacswiki.org/emacs/TabBarMode][tabbar (Emacs Wiki link)]]
+  - [[http://www.emacswiki.org/Nav][nav (Emacs Wiki link)]]
+
 
 
 * Link
