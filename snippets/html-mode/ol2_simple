@@ -1,0 +1,32 @@
+# -*- coding: utf-8; mode: snippet -*-
+# name: ol2_simple
+# key: ol2_simple
+# contributor: AXS
+# --
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>OpenLayers Example</title>
+  <!-- OpenLayers -->
+  <script src="../../apis/openlayers/2.13.1/OpenLayers.js"></script>
+  <!-- JQuery und JQueryUI -->
+  <script src="../../apis/jquery/jquery-2.1.1.js"></script>
+  <script src="../../apis/jquery-ui-1.10.4/js/jquery-ui-1.10.4.min.js"></script>
+  <!-- site -->
+  <script defer="defer" src="js/main_solr.js"></script>
+  <style type="text/css" media="screen">
+    @import "//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css";
+    @import "../css/main.css";
+    @import "css/main.css"
+  </style>
+</head>
+<body>
+  <div id="map">
+    <div id="layerswitcher" class="olControlLayerSwitcher"></div>
+    <div class="ui-widget" id="ui-widget">
+      <label for="city">Stadt: </label>
+      <input id="city"></input>
+    </div>
+  </div>
+</body>
+</html>

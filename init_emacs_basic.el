@@ -183,7 +183,30 @@ by using nxml's indentation rules."
           (error "No number at point"))
       (replace-match (number-to-string (1- (string-to-number (match-string 0))))))
 
-;; (global-set-key (kbd "C-c +") 'increment-number-at-point) 
+;; (global-set-key (kbd "C-c +") 'increment-number-at-point)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Shows XPath in modeline
+;; http://www.emacswiki.org/emacs/NxmlMode
+;;
+(defun nxml-where ()
+  "Display the hierarchy of XML elements the point is on as a path."
+  (interactive)
+  (let ((path nil))
+    (save-excursion
+      (save-restriction
+        (widen)
+        (while (and (< (point-min) (point)) ;; Doesn't error if point is at beginning of buffer
+                    (condition-case nil
+                        (progn
+                          (nxml-backward-up-element) ; always returns nil
+                          t)
+                      (error nil)))
+          (setq path (cons (xmltok-start-tag-local-name) path)))
+        (if (called-interactively-p t)
+            (message "/%s" (mapconcat 'identity path "/"))
+          (format "/%s" (mapconcat 'identity path "/")))))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -357,7 +380,7 @@ by using nxml's indentation rules."
 (require 'sr-speedbar)
 '(speedbar-show-unknown-files t)
 '(speedbar-use-images nil)
-(global-set-key (quote [f11]) 'sr-speedbar-toggle)
+(global-set-key (quote [f12]) 'sr-speedbar-toggle)
 
 
 

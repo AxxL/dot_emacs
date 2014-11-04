@@ -13,7 +13,7 @@
 ; Melpa
 (require 'package)
 (package-initialize)
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 
 ;; OS-adjustments
 (if (eq system-type 'windows-nt)
@@ -163,3 +163,22 @@
 
 (require 'simple-wiki)
 (add-to-list 'auto-mode-alist '("w3mtmp" . simple-wiki-mode))
+
+
+(server-start)
+
+(setq tramp-default-method "ssh")
+
+
+;; ,----
+;; | WEB-MODE
+;; `----
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[gj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
