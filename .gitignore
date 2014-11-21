@@ -22,7 +22,11 @@ tramp
 TAGS
 session.*
 %backup%~
+emms/
 games/
+_projects/
+cyberpunkaxxl-theme.el
+
 
 #################
 ## Eclipse
