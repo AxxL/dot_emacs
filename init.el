@@ -182,3 +182,10 @@
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
+
+
+;; ,----
+;; | GNUS
+;; `----
+;; GNUS can't send email error
+(add-to-list 'exec-path "/usr/bin/")
