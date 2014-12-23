@@ -1,0 +1,11 @@
+# -*- coding: utf-8; mode: snippet -*-
+# name: reveal.js section
+# key: revsec
+# contributor: axxl
+# --
+<section data-background="wg/logo1.png" data-background-size="250px" data-background-position="50px 50px">
+  <h2>$0</h2>
+  <p>
+  </p>
+  <aside class="notes">notes</aside>
+</section>
