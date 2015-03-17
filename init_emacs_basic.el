@@ -19,6 +19,11 @@
 ;; MS Windows clipboard is UTF-16LE
 ;; (set-clipboard-coding-system 'utf-16le-dos)
 
+;; ,----
+;; | PROJECTILE
+;; `----
+(projectile-global-mode)
+
 
 ;; Highlight current line
 ;; (global-hl-line-mode 1)
@@ -70,10 +75,12 @@
 (global-set-key (kbd "C-M-ß") 'indent-region)
 ;; quote other window (default: C-x o)
 (global-set-key (quote [C-tab]) (quote other-window))
+(global-set-key (quote [f2]) (quote other-window))
 (defun back-window ()
   (interactive)
   (other-window -1))
-(global-set-key (quote [S-tab]) (quote back-window))
+;; (global-set-key (quote [S-tab]) (quote back-window))
+(global-set-key (quote [f3]) (quote back-window))
 
 ;; next-/previous-multiframe-windows doesn't work with Golden Mode
 ;; (global-set-key (quote [C-tab]) (quote next-multiframe-window))
@@ -90,6 +97,14 @@
           (lambda () 
             (local-unset-key [C-tab])))
 
+(setq org-export-backends 
+      '(ascii
+        html
+        icalendar
+        latex
+        md
+        odt
+        ))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -190,7 +205,7 @@ by using nxml's indentation rules."
 ;; Shows XPath in modeline
 ;; http://www.emacswiki.org/emacs/NxmlMode
 ;;
-(defun nxml-where ()
+(defun xpath-nxml-where ()
   "Display the hierarchy of XML elements the point is on as a path."
   (interactive)
   (let ((path nil))
@@ -502,6 +517,6 @@ by using nxml's indentation rules."
 (setq ispell-default-dictionary "deutsch8")
 (setq flyspell-default-dictionary "deutsch8") 
 
-(defun turn-on-flyspell-mode () 
-   (flyspell-mode 1)
-) 
+;; (defun turn-on-flyspell-mode () 
+;;    (flyspell-mode 1)
+;; ) 
