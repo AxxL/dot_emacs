@@ -93,21 +93,3 @@
        (define-key js-mode-map "\C-c\C-p" 'flymake-goto-prev-error)))
 
 
-;; ,----
-;; | AUTO-COMPLETE
-;; `----
-;; (add-to-list 'load-path "~/.emacs.d/")
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-(ac-config-default)
-(global-auto-complete-mode t)
-
-;; ,----
-;; | YASNIPPET
-;; `----
-;; installed by M-x list-packkages
-;; (add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-0.8.0")
-(require 'yasnippet)
-(yas-global-mode 1)
-;; Let's have snippets in the auto-complete dropdown
-(add-to-list 'ac-sources 'ac-source-yasnippet)

@@ -152,3 +152,21 @@
 (setq org-clock-persist 'history)
 (org-clock-persistence-insinuate)
 
+
+;;
+;; AUTO-COMPLETE
+;;
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(ac-config-default)
+(global-auto-complete-mode t)
+
+;;
+;; YASNIPPET
+;; installed by M-x list-packkages
+;;
+(require 'yasnippet)
+(yas-global-mode 1)
+;; Let's have snippets in the auto-complete dropdown
+(add-to-list 'ac-sources 'ac-source-yasnippet)
+
