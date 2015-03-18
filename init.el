@@ -57,7 +57,10 @@
 ;;
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
-(load "~/.emacs.d/init_emacs_basic.el")
+(load "~/.emacs.d/lisp/basic.el")
+(load "~/.emacs.d/lisp/modes.el")
+(load "~/.emacs.d/lisp/functions.el")
+(load "~/.emacs.d/lisp/keys.el")
 ;; (load "~/.emacs.d/init_emacs_js.el")
 
 ;;
@@ -135,6 +138,7 @@
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.php?\\'" . web-mode))
 
 
 

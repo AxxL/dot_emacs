@@ -20,11 +20,6 @@
 ;; 
 ;; (add-to-list 'browse-url-filename-alist
 ;;  '("/var/www/cgi/files/" . "http://my.website.com/cgi?"))
-(setq browse-url-filename-alist
-      '(("C:/inetpub/wwwroot/" . "http://mywindowsserver/")
-        ("/home/aschaefer/public_html/" . "http://localhost/~aschaefer/"))
-)
-(global-set-key (quote [C-f11]) 'browse-url-of-file)
 
 
 ;; ,----
