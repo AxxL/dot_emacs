@@ -112,6 +112,6 @@
 ;; saveplace
 ;; Remember the cursor position of files when reopening them
 ;;
-(setq save-place-file "~/.emacs.d/saveplace")
-(setq-default save-place t)
-(require 'saveplace)
+;; (setq save-place-file "~/.emacs.d/saveplace")
+;; (setq-default save-place t)
+;; (require 'saveplace)
