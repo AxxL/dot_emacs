@@ -1,5 +1,35 @@
-;; indent-region
+;;
+;; F5 kills buffer
+;;
+(global-set-key (kbd "<f5>") 'ido-kill-buffer)
+
+
+;;
+;; f6 join-line
+;;
+(global-set-key (kbd "<f6>") 'join-line)
+
+
+;;
+;; dead-circumflex ( ) dired-up-directory
+;;
+(global-set-key (kbd "<dead-circumflex>") 'dired-up-directory)
+
+
+;;
+;; window size keys
+;;
+(global-set-key (kbd "s-<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "s-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "s-<down>") 'shrink-window)
+(global-set-key (kbd "s-<up>") 'enlarge-window)
+
+
+;;
+;; indent region
+;;
 (global-set-key (kbd "C-M-ß") 'indent-region)
+
 
 ;;
 ;; quote other window (default: C-x o)
@@ -16,6 +46,7 @@
   (other-window -1))
 (global-set-key (quote [C-S-tab]) (quote back-window))
 ;; (global-set-key (quote [f3]) (quote back-window))
+
 
 ;;
 ;; set key binding for duplicate-line
@@ -36,7 +67,9 @@
 ;;
 ;; Sr-Speedbar
 ;;
-(global-set-key (quote [f12]) 'sr-speedbar-toggle)
+;; (global-set-key (quote [f12]) 'sr-speedbar-toggle)
+(global-set-key (quote [f12]) 'neotree-toggle)
+
 
 
 ;;

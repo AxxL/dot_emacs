@@ -33,6 +33,22 @@
 (setq erc-hide-list '("JOIN" "PART" "QUIT"))
 
 
+
+;;
+;; GNUS
+;;
+;; GNUS can't send email error
+(add-to-list 'exec-path "/usr/bin/")
+
+
+;;
+;; Org Clocking?
+;; http://www.orgmode.org/manual/Clocking-work-time.html
+;;
+(setq org-clock-persist 'history)
+(org-clock-persistence-insinuate)
+
+
 ;;
 ;; Filesystem and Webserver
 ;;

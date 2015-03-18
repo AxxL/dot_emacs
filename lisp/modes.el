@@ -1,4 +1,12 @@
 ;;
+;; mapserver-mode
+;;
+(add-to-list 'load-path "~/.emacs.d/lisp/mapserver-emacs-mode/")
+(autoload 'mapserver-mode "mapserver-mode" "Mode for editing UMN MapServer files." t)
+(add-to-list 'auto-mode-alist '("\\.map\\'" . mapserver-mode))
+
+
+;;
 ;; Projectile
 ;;
 (projectile-global-mode)
@@ -17,6 +25,12 @@
   (interactive "FSudo Find File: ")
   (let ((tramp-file-name (concat "/sudo::" (expand-file-name file-name))))
     (find-file tramp-file-name)))
+;; ssh
+(setq tramp-default-method "ssh")
+
+
+
+
 
 ;;
 ;; Menu
@@ -47,10 +61,9 @@
 
 ;;
 ;; Ido
-;; http://emacswiki.org/emacs/InteractivelyDoThings
-;; Alt: (require 'ido) (ido-mode t) (setq ido-enable-flex-matching t)
 ;; flx-ido
 ;; https://github.com/lewang/flx
+;;
 (require 'flx-ido)
 (ido-mode 1)
 (ido-everywhere 1)
@@ -61,10 +74,18 @@
 ;;
 ;; Speedbar, sr-speedbar
 ;;
-(require 'sr-speedbar)
-'(speedbar-show-unknown-files t)
-'(speedbar-use-images nil)
+;; (require 'sr-speedbar)
+;; (make-face 'speedbar-face)
+;; (set-face-font 'speedbar-face "Ubuntu Mono-12")
+;; (setq speedbar-mode-hook '(lambda () (buffer-face-set 'speedbar-face)))
+;; (setq speedbar-show-unknown-files t)
+;; (setq speedbar-use-images nil)
+;; (setq speedbar-verbosity-level 0)
 
+;;
+;; Neotree
+;;
+(require 'neotree)
 
 ;;
 ;; MULTIPLE CURSORS
@@ -83,7 +104,38 @@
   "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
+;;
+;; WEB-MODE
+;;
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[gj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.php?\\'" . web-mode))
+
+
 ;; ,----
 ;; | Boxquote
 ;; `----
 (require 'boxquote)
+
+
+;;
+;; YASNIPPET
+;; installed by M-x list-packkages
+;;
+(require 'yasnippet)
+(yas-global-mode 1)
+;; Let's have snippets in the auto-complete dropdown
+;; (add-to-list 'ac-sources 'ac-source-yasnippet)
+
+
+;;
+;; nyan-mode
+;;
+(require 'nyan-mode)
+(nyan-mode)
