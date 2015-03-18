@@ -84,7 +84,7 @@
 ;;
 ;; Emacs Server
 ;;
-                                        ;(server-start)
+(server-start)
 
 ;;
 ;; AUTO-COMPLETE

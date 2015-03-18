@@ -30,7 +30,7 @@ bbdb
 org-clock-save.el
 smex-items
 # saveplace/*
-
+places
 
 #################
 ## Eclipse
