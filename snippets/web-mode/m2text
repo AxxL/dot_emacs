@@ -1,0 +1,22 @@
+# -*- coding: utf-8; mode: snippet -*-
+# name: m2 text
+# key: m2text
+# contributor: axxl
+# --
+{% set id = 'p[_b_text]' %}
+{% set val = p['_b_text'] is defined ? p['_b_text'] : 'Bitte Text einfügen.' %}
+
+<div class="oneColBox">
+	<label class="displayLeft" for="{{ id|md_id}}">
+        	<div class="icon optional"></div>
+                Textfeld:
+        </label>
+
+    <div class="btn-group displayRight">
+        <div class="single showHelp" {{ id|md_data_obj }}><div class="icon help"></div></div>
+    </div>
+
+    <textarea name="{{ id }}" id="{{ id|md_id }}" class="oneCol0">{{ val }}</textarea>
+
+    <div class="clear"></div>
+</div>

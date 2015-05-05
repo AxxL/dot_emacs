@@ -1,0 +1,52 @@
+# -*- coding: utf-8; mode: snippet -*-
+# name: m2 select
+# key: m2select
+# contributor: axxl
+# --
+<div class="twoColBox">
+
+    {% set id = 'p[_b_select]' %}
+    {% set val = p['_b_select'] is defined ? p['_b_select'] : '' %}
+
+    <div class="left">
+        <label>
+            <div class="icon optional"></div>Select:
+        </label>
+
+        <select name="{{ id }}" class="twoCol1">
+            <option value="" {{ md_select(val, '') }}></option>
+            <option value="a" {{ md_select(val, 'a') }}>Select A</option>
+            <option value="b" {{ md_select(val, 'b') }}>Select B</option>
+        </select>
+
+        <div class="btn-group">
+            <div class="last showHelp" {{ id|md_data_obj }}>
+                <div class="icon help"></div>
+            </div>
+        </div>
+    </div>
+
+
+    {% set id = 'p[_b_datum]' %}
+    {% set val = p['_b_datum'] is defined ? p['_b_datum'] : '' %}
+
+    <div class="right">
+        <label>
+            <div class="icon optional"></div>Datum:
+        </label>
+
+        <div class="fr">
+            <div class="btn-group">
+                <div class="wizard_{{ id|md_obj_id }}" {{ id|md_data_obj }}>
+                    <div class="icon wizard"></div>
+                </div>
+                <div class="last showHelp" {{ id|md_data_obj }}>
+                    <div class="icon help"></div>
+                </div>
+            </div> 
+
+            <input name="{{ id }}" id="{{ id|md_id }}" type="text" value="{{ val }}" class="twoCol2 datepicker"/>
+        </div>
+    </div>
+
+</div>

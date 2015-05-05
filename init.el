@@ -5,7 +5,7 @@
     (progn
       (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
       (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-      (if (fboundp 'scroll-bar-mode) (menu-bar-mode -1))
+      ;; (if (fboundp 'scroll-bar-mode) (menu-bar-mode -1))
       )
   nil)
 
@@ -69,7 +69,7 @@
 ;;
 ;; SMEX
 ;;
-(smex-initialize)
+;; (smex-initialize)
 
 ;;
 ;; yaml mode
@@ -85,6 +85,8 @@
 ;; Emacs Server
 ;;
 (server-start)
+(unless (server-running-p)
+  (server-start))
 
 ;;
 ;; AUTO-COMPLETE
@@ -98,7 +100,7 @@
 ;; company mode
 ;;
 (global-company-mode t)
-(setq company-idle-delay 1)
+(setq company-idle-delay 0.2)
 (setq company-selection-wrap-around t)
 ;; remove annoying blinking
 ;; (setq company-echo-delay 0)

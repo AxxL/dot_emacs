@@ -1,0 +1,6 @@
+# -*- coding: utf-8; mode: snippet -*-
+# name: m2 include
+# key: m2include
+# contributor: axxl
+# --
+{% include 'MyUserBundleCoreBundle:Beispiel:text.html.twig' %}

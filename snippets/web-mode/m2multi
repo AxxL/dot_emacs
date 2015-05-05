@@ -1,0 +1,40 @@
+# -*- coding: utf-8; mode: snippet -*-
+# name: m2 multi
+# key: m2multi
+# contributor: axxl
+# --
+{% set id = 'p[_b_multi][]' %}
+
+<div class="oneColBox">
+    <label>
+        <div class="icon optional"></div>Multi:
+    </label>
+
+    <input name="multi" id="source_{{ id|md_obj_id }}" type="text" class="oneCol2 no-value" value="" />
+
+    <div class="btn-group">
+        <div class="cmdAddSingleValue" {{ id|md_data_obj }} data-name="{{ id }}">
+            <div class="icon add"></div>
+        </div>
+        <div class="last showHelp" {{ id|md_data_obj }}><div class="icon help"></div></div>
+    </div>
+
+   <div class="clear"></div>
+
+    <div class="singleResult" id="result_{{ id|md_obj_id }}">
+        {% if p['_b_multi'] is defined %}
+        {% for value in p['_b_multi'] %}
+        {% if value is not empty %}
+        <div>
+            <input type="hidden" name="{{ id }}" value="{{ value }}" />
+            <label>{{ value }}</label>
+            <div class="btn cmdDeleteSingleValue">
+                <div class="icon delete"></div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        <div class="clear"></div>
+    </div>   
+</div>
