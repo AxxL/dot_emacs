@@ -117,3 +117,30 @@
 ;; (setq save-place-file "~/.emacs.d/saveplace")
 ;; (setq-default save-place t)
 ;; (require 'saveplace)
+
+
+;;
+;; HELM
+;;
+;; (require 'helm-config)
+;; (setq helm-candidate-number-limit 100)
+;; ;; From https://gist.github.com/antifuchs/9238468
+;; (setq helm-idle-delay 0.0 ; update fast sources immediately (doesn't).
+;;       helm-input-idle-delay 0.01  ; this actually updates things
+;;                                         ; reeeelatively quickly.
+;;       helm-quick-update ;TODO: 
+;;       ;; helm-M-x-requires-pattern nil
+;;       ;; helm-ff-skip-boring-files t
+;;       )
+;; (helm-mode 1)
+;; (global-set-key (kbd "C-c h")  'helm-mini)
+;; (global-set-key (kbd "C-h a")  'helm-apropos)
+;; (global-set-key (kbd "C-x C-b")  'helm-buffers-list)
+;; (global-set-key (kbd "C-x b")  'helm-buffers-list)
+;; (global-set-key (kbd "M-y")  'helm-show-kill-ring)
+;; (global-set-key (kbd "M-x")  'helm-M-x)
+;; (global-set-key (kbd "C-x c o")  'helm-occur)
+;; (global-set-key (kbd "C-x c s")  'helm-swoop)
+;; (global-set-key (kbd "C-x c b")  'my/helm-do-grep-book-notes)
+;; (global-set-key (kbd "C-x c SPC")  'helm-all-mark-rings)
+;; (ido-mode -1) ;; Turn off ido mode in case I enabled it accidentally

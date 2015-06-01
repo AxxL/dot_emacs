@@ -68,6 +68,7 @@
 (ido-mode 1)
 (ido-everywhere 1)
 (flx-ido-mode 1)
+
 ;; disable ido faces to see flx highlights.
 ;; (setq ido-use-faces nil)
 
@@ -133,7 +134,6 @@
 (yas-global-mode 1)
 ;; Let's have snippets in the auto-complete dropdown
 ;; (add-to-list 'ac-sources 'ac-source-yasnippet)
-
 
 ;;
 ;; nyan-mode
