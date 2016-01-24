@@ -1,0 +1,7 @@
+# -*- coding: utf-8; mode: snippet -*-
+# name: rst-mode insert link
+# key: rstlink
+# group: rst-mode
+# contributor: AxxL
+# --
+`Name <link>`_

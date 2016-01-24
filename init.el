@@ -5,7 +5,7 @@
     (progn
       (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
       (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-      ;; (if (fboundp 'scroll-bar-mode) (menu-bar-mode -1))
+      ;; (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
       )
   nil)
 
@@ -61,7 +61,7 @@
 (load "~/.emacs.d/lisp/modes.el")
 (load "~/.emacs.d/lisp/functions.el")
 (load "~/.emacs.d/lisp/keys.el")
-;; (load "~/.emacs.d/init_emacs_js.el")
+;; (load "~/.emacs.d/lisp/temp_js.el")
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

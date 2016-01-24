@@ -1,12 +1,16 @@
 #################
 ## Emacs
 #################
+emacsd.tar.gz
+axs/
+
 auto-save-list/
 .backups/
 elpa/
 eshell/
 image-dired/
 url/
+lisp/neuserver-mode.el
 
 lisp/emacs-powerline/
 lisp/mapserver-emacs-mode/

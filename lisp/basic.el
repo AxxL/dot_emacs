@@ -101,25 +101,56 @@
        "Oktober" "November" "Dezember"])
 
 
+
+
+;;
+;; show week numbers
+;; http://emacswiki.org/emacs/CalendarWeekNumbers
+;;
+
+(copy-face font-lock-constant-face 'calendar-iso-week-face)
+(set-face-attribute 'calendar-iso-week-face nil
+                    :height 0.7)
+(setq calendar-intermonth-text
+      '(propertize
+        (format "%2d"
+                (car
+                 (calendar-iso-from-absolute
+                  (calendar-absolute-from-gregorian (list month day year)))))
+        'font-lock-face 'calendar-iso-week-face))
+
+(copy-face 'default 'calendar-iso-week-header-face)
+(set-face-attribute 'calendar-iso-week-header-face nil
+                    :height 0.7)
+(setq calendar-intermonth-header
+      (propertize "KW"                  ; or e.g. "KW" in Germany
+                  'font-lock-face 'calendar-iso-week-header-face))
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Aspell
 ;; (setq-default ispell-program-name "aspell")
-(setq ispell-program-name "aspell") 
+(setq ispell-program-name "aspell"
+      flyspell-default-dictionary "deutsch8"
+      ispell-local-dictionary "deutsch8"
+      ispell-silently-savep t
+      )
 
 ;; alist leeren und für aspell /de_DE.UTF-8 richtig eingestellen: 
 (setq ispell-local-dictionary-alist nil) 
 (add-to-list 'ispell-local-dictionary-alist 
 	     '("deutsch8" 
  	       "[[:alpha:]]" "[^[:alpha:]]"
-	       "[']" t
-	       ("-C" "-d" "de_DE-neu.multi")
- 	        "~latin1" iso-8859-1)
- 	     )
+           "[']" t
+           ("-C" "-d" "de_DE-neu.multi")
+           "~latin1" iso-8859-1)
+         )
 
-(setq ispell-dictionary "deutsch8")
-(setq ispell-local-dictionary "deutsch8")
-(setq ispell-default-dictionary "deutsch8")
-(setq flyspell-default-dictionary "deutsch8") 
+(setq ispell-list-command "--list")
+
+;; (setq ispell-dictionary "deutsch8")
+;; (setq ispell-default-dictionary "deutsch8")
+
 
 ;; (defun turn-on-flyspell-mode () 
 ;;    (flyspell-mode 1)

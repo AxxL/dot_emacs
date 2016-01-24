@@ -3,7 +3,7 @@
 # key: orgclocktableday
 # contributor: AXS
 # --
-#+BEGIN: clocktable :maxlevel 10 :scope file :block 2015-02-27
-#+CAPTION: Clock summary 
 
-#+END:
+ #+BEGIN: clocktable :maxlevel 10 :scope file :block 2015-02-27
+ #+CAPTION: Clock summary 
+ #+END:
