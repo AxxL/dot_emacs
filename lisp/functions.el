@@ -239,3 +239,12 @@ by using nxml's indentation rules."
           (set-window-buffer (next-window) next-win-buffer)
           (select-window first-win)
           (if this-win-2nd (other-window 1))))))
+
+
+;; get string content from a file
+(defun get-string-from-file (filePath)
+  "Return filePath's file content."
+  (with-temp-buffer
+    (insert-file-contents filePath)
+    (buffer-string)))
+;; thanks to "Pascal J Bourguignon" and "(TheFlyingDutchmanzzbba…@aol.com)". 2010-09-02
