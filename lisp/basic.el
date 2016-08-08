@@ -129,7 +129,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Aspell
-;; (setq-default ispell-program-name "aspell")
+(setq-default ispell-program-name "aspell")
 (setq ispell-program-name "aspell"
       flyspell-default-dictionary "deutsch8"
       ispell-local-dictionary "deutsch8"
@@ -146,11 +146,12 @@
            "~latin1" iso-8859-1)
          )
 
-(setq ispell-list-command "--list")
+;; (setq ispell-list-command "--list")
 
+
+;; ENDE
 ;; (setq ispell-dictionary "deutsch8")
 ;; (setq ispell-default-dictionary "deutsch8")
-
 
 ;; (defun turn-on-flyspell-mode () 
 ;;    (flyspell-mode 1)
