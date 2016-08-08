@@ -1,3 +1,8 @@
+;; /su: or /sudo: on remote hosts
+;; You can also use this syntax to sudo/su to root (or of course any other user) on a remote host:
+;; C-xC-f /ssh:you@remotehost|sudo:remotehost:/path/to/file RET
+;; http://stackoverflow.com/questions/2177687/open-file-via-ssh-and-sudo-with-emacs
+
 ;;
 ;; X? no tool-bar no scroll-bar
 ;;
@@ -20,7 +25,9 @@
 (require 'package)
 (package-initialize)
 (add-to-list 'package-archives
-	     '("melpa" . "http://melpa.org/packages/") t)
+             '("melpa" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives
+             '("org" . "http://orgmode.org/elpa/") t)
 
 ;;
 ;; OS-adjustments
@@ -38,7 +45,8 @@
 (if (display-graphic-p)
     (progn
       ;; (set-face-attribute 'default nil :font "Bitstream Vera Sans Mono" :height 95)
-      (set-face-attribute 'default nil :font "Ubuntu Mono" :height 120)
+      ;; (set-face-attribute 'default nil :font "Ubuntu Mono" :height 120)
+      (set-face-attribute 'default nil :font "Terminus" :height 120)
       ;; Color Themes
       (load-theme 'monokai t)
       ;; (load-theme 'cyberpunkaxxl t)
@@ -61,6 +69,7 @@
 (load "~/.emacs.d/lisp/modes.el")
 (load "~/.emacs.d/lisp/functions.el")
 (load "~/.emacs.d/lisp/keys.el")
+(load "~/.emacs.d/lisp/mymu4e.el")
 ;; (load "~/.emacs.d/lisp/temp_js.el")
 
 
@@ -144,3 +153,20 @@
 ;; (global-set-key (kbd "C-x c b")  'my/helm-do-grep-book-notes)
 ;; (global-set-key (kbd "C-x c SPC")  'helm-all-mark-rings)
 ;; (ido-mode -1) ;; Turn off ido mode in case I enabled it accidentally
+
+
+;; ,----
+;; | magit
+;; `----
+(global-set-key (kbd "C-x g") 'magit-status)
+
+
+
+
+
+;; ,----
+;; | Open HTML with Firefox as default
+;; `----
+;; (setq browse-url-firefox-program "C:/Program Files (x86)/Mozilla Firefox/firefox.exe")
+(setq browse-url-generic-program "vivaldi"
+      browse-url-browser-function 'browse-url-generic)
