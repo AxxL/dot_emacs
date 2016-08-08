@@ -12,7 +12,6 @@
  '(default-input-method "german-postfix")
  '(fill-column 76)
  '(flymake-log-level 3)
- '(flyspell-issue-message-flag nil)
  '(global-font-lock-mode t nil (font-lock))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
@@ -20,6 +19,9 @@
  '(make-backup-files t)
  '(mm-text-html-renderer (quote html2text))
  '(org-agenda-files (quote ("~/todo.org")))
+ '(package-selected-packages
+   (quote
+    (auctex mu4e-alert flycheck magit calfw imgur svg org-present epresent yasnippet yaml-mode web-mode use-package twig-mode sr-speedbar smex scss-mode sass-mode puml-mode projectile php-mode ox-mediawiki org-plus-contrib nyan-mode nginx-mode neotree multiple-cursors monokai-theme markdown-mode highlight-tail focus flx-ido fireplace csv-mode company boxquote birds-of-paradise-plus-theme auto-complete async 2048-game)))
  '(require-final-newline t)
  '(show-paren-mode t)
  '(show-paren-style (quote mixed))
