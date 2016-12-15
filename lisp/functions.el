@@ -129,7 +129,7 @@ by using nxml's indentation rules."
 ;; Shows XPath in modeline
 ;; http://www.emacswiki.org/emacs/NxmlMode
 ;;
-(defun xpath-nxml-where ()
+(defun nxml-where-xpath ()
   "Display the hierarchy of XML elements the point is on as a path."
   (interactive)
   (let ((path nil))
@@ -146,7 +146,6 @@ by using nxml's indentation rules."
         (if (called-interactively-p t)
             (message "/%s" (mapconcat 'identity path "/"))
           (format "/%s" (mapconcat 'identity path "/")))))))
-
 
 ;;
 ;; Wikipedia Lookup
