@@ -21,7 +21,8 @@
  '(org-agenda-files (quote ("~/todo.org")))
  '(package-selected-packages
    (quote
-    (auctex mu4e-alert flycheck magit calfw imgur svg org-present epresent yasnippet yaml-mode web-mode use-package twig-mode sr-speedbar smex scss-mode sass-mode puml-mode projectile php-mode ox-mediawiki org-plus-contrib nyan-mode nginx-mode neotree multiple-cursors monokai-theme markdown-mode highlight-tail focus flx-ido fireplace csv-mode company boxquote birds-of-paradise-plus-theme auto-complete async 2048-game)))
+    (chronos json-mode color-theme-modern auctex mu4e-alert flycheck magit calfw imgur svg org-present epresent yasnippet yaml-mode web-mode use-package twig-mode sr-speedbar smex scss-mode sass-mode puml-mode projectile php-mode ox-mediawiki org-plus-contrib nyan-mode nginx-mode neotree multiple-cursors monokai-theme markdown-mode highlight-tail focus flx-ido fireplace csv-mode company boxquote birds-of-paradise-plus-theme auto-complete async 2048-game)))
+ '(puml-plantuml-jar-path "/home/aschaefer/bin/plantuml/plantuml.jar")
  '(require-final-newline t)
  '(show-paren-mode t)
  '(show-paren-style (quote mixed))
