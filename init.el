@@ -49,6 +49,7 @@
       (set-face-attribute 'default nil :font "Terminus" :height 120)
       ;; Color Themes
       (load-theme 'monokai t)
+      ;; (load-theme 'cobalt t)
       ;; (load-theme 'cyberpunkaxxl t)
       ;; (load-theme 'cyberpunk t)
       ;; (load-theme 'zenburn t)
@@ -56,6 +57,7 @@
       ;; (load-theme 'birds-of-paradise-plus t)
       ;; (setq-default cursor-type 'bar)
       ;; (setq-default cursor-type 'box)
+      (global-unset-key (kbd "C-z"))
       ) ; progn
   nil )
 
@@ -161,12 +163,15 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 
 
-
-
-
 ;; ,----
 ;; | Open HTML with Firefox as default
 ;; `----
 ;; (setq browse-url-firefox-program "C:/Program Files (x86)/Mozilla Firefox/firefox.exe")
 (setq browse-url-generic-program "vivaldi"
       browse-url-browser-function 'browse-url-generic)
+
+
+;; (defun play-youtube-video (url)
+;;   (interactive "sURL: ")
+;;   (shell-command
+;;    (concat "youtube-dl  -o - " url " | vlc -")))
