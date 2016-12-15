@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: orgsrc
+# key: orgsrc
+# --
+#+BEGIN_SRC xml
+$0
+#+END_SRC
