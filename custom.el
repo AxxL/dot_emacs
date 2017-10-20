@@ -21,7 +21,7 @@
  '(org-agenda-files (quote ("~/todo.org")))
  '(package-selected-packages
    (quote
-    (color-theme-sanityinc-tomorrow tao-theme neotree tabbar magit rainbow-mode plantuml-mode flymake-cursor pdf-tools solarized-theme chronos json-mode color-theme-modern auctex mu4e-alert flycheck calfw svg org-present yasnippet yaml-mode web-mode use-package twig-mode smex scss-mode sass-mode puml-mode projectile php-mode ox-mediawiki org-plus-contrib nyan-mode multiple-cursors monokai-theme markdown-mode highlight-tail focus flx-ido csv-mode company boxquote birds-of-paradise-plus-theme auto-complete async 2048-game)))
+    (markdown-preview-mode color-theme-sanityinc-tomorrow tao-theme neotree tabbar magit rainbow-mode plantuml-mode flymake-cursor pdf-tools solarized-theme chronos json-mode color-theme-modern auctex mu4e-alert flycheck calfw svg org-present yasnippet yaml-mode web-mode use-package twig-mode smex scss-mode sass-mode puml-mode projectile php-mode ox-mediawiki org-plus-contrib nyan-mode multiple-cursors monokai-theme markdown-mode highlight-tail focus flx-ido csv-mode company boxquote birds-of-paradise-plus-theme auto-complete async 2048-game)))
  '(puml-plantuml-jar-path "/home/aschaefer/bin/plantuml/plantuml.jar")
  '(require-final-newline t)
  '(show-paren-mode t)
@@ -30,7 +30,6 @@
  '(speedbar-use-images nil)
  '(sql-product (quote postgres))
  '(tab-width 2)
- '(tramp-syntax (quote default))
  '(yaml-indent-offset 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
