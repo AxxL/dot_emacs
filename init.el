@@ -206,3 +206,9 @@
 ;; company mode camel case
 ;; https://emacs.stackexchange.com/questions/10837/how-to-make-company-mode-be-case-sensitive-on-plain-text
 (setq company-dabbrev-downcase nil)
+
+;; Markdown Preview Mode
+
+;; https://github.com/ancane/markdown-preview-mode
+;; (setq markdown-preview-stylesheets (list "http://thomasf.github.io/solarized-css/solarized-light.min.css"))
+;; (setq markdown-preview-stylesheets (list "~/.emacs.d/lisp/solarized-light.min.css"))
