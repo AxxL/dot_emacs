@@ -9,7 +9,7 @@
 ;;
 ;; Projectile
 ;;
-(projectile-global-mode)
+;; (projectile-global-mode)
 
 ;; Highlight current line
 ;; (global-hl-line-mode 1)
@@ -19,12 +19,12 @@
 ;;
 ;; Tramp
 ;;
-(require 'tramp)
-(defun sudo-find-file (file-name)
-  "Like find file, but opens the file as root."
-  (interactive "FSudo Find File: ")
-  (let ((tramp-file-name (concat "/sudo::" (expand-file-name file-name))))
-    (find-file tramp-file-name)))
+;; (require 'tramp)
+;; (defun sudo-find-file (file-name)
+;;   "Like find file, but opens the file as root."
+;;   (interactive "FSudo Find File: ")
+;;   (let ((tramp-file-name (concat "/sudo::" (expand-file-name file-name))))
+;;     (find-file tramp-file-name)))
 ;; ssh
 (setq tramp-default-method "ssh")
 
@@ -86,7 +86,7 @@
 ;;
 ;; Neotree
 ;;
-(require 'neotree)
+;; (require 'neotree)
 
 ;;
 ;; MULTIPLE CURSORS

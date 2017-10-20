@@ -18,14 +18,14 @@
 ;;
 ;; Org-mode
 ;;
-(setq org-export-backends 
-      '(ascii
-        html
-        icalendar
-        latex
-        md
-        odt
-        ))
+;; (setq org-export-backends 
+;;       '(ascii
+;;         html
+;;         icalendar
+;;         latex
+;;         md
+;;         odt
+;;         ))
 
 ;;
 ;; ERC
@@ -144,7 +144,16 @@
            "[']" t
            ("-C" "-d" "de_DE-neu.multi")
            "~latin1" iso-8859-1)
-         )
+       )
+
+;; run flyspell-buffer after I added a word to my personal dictionary
+;; https://www.reddit.com/r/emacs/comments/4oc7pg/spellcheck_flyspellmode_underlines_disappear_when/d4bj6tf/
+
+(defun flyspell-buffer-after-pdict-save (&rest _)
+  (flyspell-buffer))
+
+(advice-add 'ispell-pdict-save :after #'flyspell-buffer-after-pdict-save)
+
 
 ;; (setq ispell-list-command "--list")
 

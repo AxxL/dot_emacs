@@ -3,6 +3,13 @@
 ;; C-xC-f /ssh:you@remotehost|sudo:remotehost:/path/to/file RET
 ;; http://stackoverflow.com/questions/2177687/open-file-via-ssh-and-sudo-with-emacs
 
+
+;; https://www.reddit.com/r/emacs/comments/6zikvl/emacs_253_released/
+;; Security vulnerability
+(eval-after-load "enriched"
+  '(defun enriched-decode-display-prop (start end &optional param)
+     (list start end)))
+
 ;;
 ;; X? no tool-bar no scroll-bar
 ;;
@@ -10,7 +17,7 @@
     (progn
       (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
       (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-      ;; (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+      (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
       )
   nil)
 
@@ -46,13 +53,22 @@
     (progn
       ;; (set-face-attribute 'default nil :font "Bitstream Vera Sans Mono" :height 95)
       ;; (set-face-attribute 'default nil :font "Ubuntu Mono" :height 120)
-      (set-face-attribute 'default nil :font "Terminus" :height 120)
+      ;; (set-face-attribute 'default nil :font "Source Code Pro Medium" :height 110)
+      ;; (set-face-attribute 'default nil :font "Terminus" :height 120)
+      (set-face-attribute 'default nil :font "Menlo" :height 100)
       ;; Color Themes
-      (load-theme 'monokai t)
+      ;; (load-theme 'adwaita t)
+      ;; (load-theme 'monokai t)
+      (load-theme 'sanityinc-tomorrow-eighties t)
+      (set-background-color "#272822")
+      (set-foreground-color "#F8F8F2")
+      ;; (load-theme 'tao-yin t)
       ;; (load-theme 'cobalt t)
       ;; (load-theme 'cyberpunkaxxl t)
       ;; (load-theme 'cyberpunk t)
       ;; (load-theme 'zenburn t)
+      ;; (load-theme 'plan9 t)
+      ;; (load-theme 'solarized-light t)
       ;; (load-theme 'solarized-dark t)
       ;; (load-theme 'birds-of-paradise-plus t)
       ;; (setq-default cursor-type 'bar)
@@ -71,7 +87,7 @@
 (load "~/.emacs.d/lisp/modes.el")
 (load "~/.emacs.d/lisp/functions.el")
 (load "~/.emacs.d/lisp/keys.el")
-(load "~/.emacs.d/lisp/mymu4e.el")
+;; (load "~/.emacs.d/lisp/mymu4e.el")
 ;; (load "~/.emacs.d/lisp/temp_js.el")
 
 
@@ -113,6 +129,7 @@
 (global-company-mode t)
 (setq company-idle-delay 0.2)
 (setq company-selection-wrap-around t)
+
 ;; remove annoying blinking
 ;; (setq company-echo-delay 0)
 ;; start autocompletion only after typing
@@ -175,3 +192,17 @@
 ;;   (interactive "sURL: ")
 ;;   (shell-command
 ;;    (concat "youtube-dl  -o - " url " | vlc -")))
+
+;; Dired Directories first
+;; https://www.emacswiki.org/emacs/DiredSorting
+(setq dired-listing-switches "-aBhl  --group-directories-first")
+
+(desktop-save-mode 1)
+
+
+;; PDF Tools
+(pdf-tools-install)
+
+;; company mode camel case
+;; https://emacs.stackexchange.com/questions/10837/how-to-make-company-mode-be-case-sensitive-on-plain-text
+(setq company-dabbrev-downcase nil)

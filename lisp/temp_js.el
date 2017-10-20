@@ -57,7 +57,8 @@
            (local-file (file-relative-name
                         temp-file
                         (file-name-directory buffer-file-name))))
-      (list "~/node_modules/jshint/bin/jshint" (list local-file))))
+      ;; (list "~/node_modules/jshint/bin/jshint" (list local-file))))
+      (list "jshint" (list local-file))))
 
   (setq flymake-err-line-patterns
         ;; tester.js: line 23, col 15, Expected ':' and instead saw '='.
