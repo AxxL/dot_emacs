@@ -87,7 +87,7 @@
 (load "~/.emacs.d/lisp/modes.el")
 (load "~/.emacs.d/lisp/functions.el")
 (load "~/.emacs.d/lisp/keys.el")
-;; (load "~/.emacs.d/lisp/mymu4e.el")
+(load "~/.emacs.d/lisp/mymu4e.el")
 ;; (load "~/.emacs.d/lisp/temp_js.el")
 
 
@@ -150,7 +150,7 @@
 ;;
 ;; HELM
 ;;
-;; (require 'helm-config)
+(require 'helm-config)
 ;; (setq helm-candidate-number-limit 100)
 ;; ;; From https://gist.github.com/antifuchs/9238468
 ;; (setq helm-idle-delay 0.0 ; update fast sources immediately (doesn't).
@@ -160,18 +160,29 @@
 ;;       ;; helm-M-x-requires-pattern nil
 ;;       ;; helm-ff-skip-boring-files t
 ;;       )
-;; (helm-mode 1)
-;; (global-set-key (kbd "C-c h")  'helm-mini)
-;; (global-set-key (kbd "C-h a")  'helm-apropos)
-;; (global-set-key (kbd "C-x C-b")  'helm-buffers-list)
-;; (global-set-key (kbd "C-x b")  'helm-buffers-list)
-;; (global-set-key (kbd "M-y")  'helm-show-kill-ring)
-;; (global-set-key (kbd "M-x")  'helm-M-x)
+(helm-mode 1)
+(setq helm-M-x-fuzzy-match t)
+
+;; Keyboard shortcuts
+(global-set-key (kbd "M-x") #'helm-M-x)
+(global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
+(global-set-key (kbd "C-x C-f") #'helm-find-files)
+
+(global-set-key (kbd "C-c h")  'helm-mini)
+(global-set-key (kbd "C-h a")  'helm-apropos)
+(global-set-key (kbd "C-x C-b")  'helm-buffers-list)
+(global-set-key (kbd "C-x b")  'helm-buffers-list)
+(global-set-key (kbd "M-y")  'helm-show-kill-ring)
 ;; (global-set-key (kbd "C-x c o")  'helm-occur)
+(global-set-key (kbd "C-s")  'helm-occur)
 ;; (global-set-key (kbd "C-x c s")  'helm-swoop)
-;; (global-set-key (kbd "C-x c b")  'my/helm-do-grep-book-notes)
-;; (global-set-key (kbd "C-x c SPC")  'helm-all-mark-rings)
-;; (ido-mode -1) ;; Turn off ido mode in case I enabled it accidentally
+(global-set-key (kbd "C-x c b")  'my/helm-do-grep-book-notes)
+(global-set-key (kbd "C-x c SPC")  'helm-all-mark-rings)
+(ido-mode -1) ;; Turn off ido mode in case I enabled it accidentally
+
+;; change tab to c-j (or vice versa)
+(define-key helm-find-files-map "\t" 'helm-execute-persistent-action)
+
 
 
 ;; ,----
@@ -197,7 +208,8 @@
 ;; https://www.emacswiki.org/emacs/DiredSorting
 (setq dired-listing-switches "-aBhl  --group-directories-first")
 
-(desktop-save-mode 1)
+;; Save Session
+;; (desktop-save-mode 1)
 
 
 ;; PDF Tools
@@ -212,3 +224,11 @@
 ;; https://github.com/ancane/markdown-preview-mode
 ;; (setq markdown-preview-stylesheets (list "http://thomasf.github.io/solarized-css/solarized-light.min.css"))
 ;; (setq markdown-preview-stylesheets (list "~/.emacs.d/lisp/solarized-light.min.css"))
+
+;; Start Org Agenda at startup
+(add-hook 'after-init-hook 'org-agenda-list)
+(setq initial-buffer-choice (lambda ()
+    (get-buffer "*Org Agenda*")))  
+
+
+(require 'calfw)
