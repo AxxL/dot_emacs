@@ -21,13 +21,11 @@
  '(org-agenda-files (quote ("~/todo.org")))
  '(package-selected-packages
    (quote
-    (markdown-preview-mode color-theme-sanityinc-tomorrow tao-theme neotree tabbar magit rainbow-mode plantuml-mode flymake-cursor pdf-tools solarized-theme chronos json-mode color-theme-modern auctex mu4e-alert flycheck calfw svg org-present yasnippet yaml-mode web-mode use-package twig-mode smex scss-mode sass-mode puml-mode projectile php-mode ox-mediawiki org-plus-contrib nyan-mode multiple-cursors monokai-theme markdown-mode highlight-tail focus flx-ido csv-mode company boxquote birds-of-paradise-plus-theme auto-complete async 2048-game)))
+    (helm material-theme markdown-preview-mode color-theme-sanityinc-tomorrow tao-theme neotree tabbar magit rainbow-mode plantuml-mode flymake-cursor pdf-tools solarized-theme chronos json-mode color-theme-modern auctex mu4e-alert flycheck calfw svg org-present yasnippet yaml-mode web-mode use-package twig-mode smex scss-mode sass-mode puml-mode projectile php-mode ox-mediawiki org-plus-contrib nyan-mode multiple-cursors monokai-theme markdown-mode highlight-tail focus flx-ido csv-mode company boxquote birds-of-paradise-plus-theme auto-complete async 2048-game)))
  '(puml-plantuml-jar-path "/home/aschaefer/bin/plantuml/plantuml.jar")
  '(require-final-newline t)
  '(show-paren-mode t)
  '(show-paren-style (quote mixed))
- '(speedbar-show-unknown-files t)
- '(speedbar-use-images nil)
  '(sql-product (quote postgres))
  '(tab-width 2)
  '(yaml-indent-offset 4))
