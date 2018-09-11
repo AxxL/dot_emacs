@@ -3,6 +3,14 @@
 ;;
 
 ;;
+;; Emacs Server
+;;
+(server-start)
+(unless (server-running-p)
+  (server-start))
+
+
+;;
 ;; Beenden mit Nachfrage
 ;;
 (setq kill-emacs-query-functions
@@ -15,9 +23,10 @@
 ;;
 (setq frame-title-format (concat "%f (%b) - %F " emacs-version))
 
-;;
-;; Org-mode
-;;
+
+;; ,----
+;; | Org-mode
+;; `----
 ;; (setq org-export-backends 
 ;;       '(ascii
 ;;         html
@@ -26,6 +35,21 @@
 ;;         md
 ;;         odt
 ;;         ))
+
+;; Org Clocking?
+;; http://www.orgmode.org/manual/Clocking-work-time.html
+(setq org-clock-persist 'history)
+(org-clock-persistence-insinuate)
+
+
+;;
+;; Org-Agenda
+;;
+;; Start Org Agenda at startup
+(add-hook 'after-init-hook 'org-agenda-list)
+(setq initial-buffer-choice (lambda ()
+    (get-buffer "*Org Agenda*")))  
+
 
 ;;
 ;; ERC
@@ -40,13 +64,6 @@
 ;; GNUS can't send email error
 (add-to-list 'exec-path "/usr/bin/")
 
-
-;;
-;; Org Clocking?
-;; http://www.orgmode.org/manual/Clocking-work-time.html
-;;
-(setq org-clock-persist 'history)
-(org-clock-persistence-insinuate)
 
 
 ;;
@@ -165,3 +182,19 @@
 ;; (defun turn-on-flyspell-mode () 
 ;;    (flyspell-mode 1)
 ;; ) 
+
+
+;; ,----
+;; | Open HTML with Firefox as default
+;; `----
+;; (setq browse-url-firefox-program "C:/Program Files (x86)/Mozilla Firefox/firefox.exe")
+(setq browse-url-generic-program "vivaldi"
+      browse-url-browser-function 'browse-url-generic)
+
+
+;;
+;; Dired
+;;
+;; Dired Directories first
+;; https://www.emacswiki.org/emacs/DiredSorting
+(setq dired-listing-switches "-aBhl  --group-directories-first")
