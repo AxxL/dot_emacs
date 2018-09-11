@@ -91,3 +91,10 @@
 ;; Browse URL of File
 ;;
 (global-set-key (quote [C-f11]) 'browse-url-of-file)
+
+
+;; ,----
+;; | magit
+;; `----
+(global-set-key (kbd "C-x g") 'magit-status)
+
