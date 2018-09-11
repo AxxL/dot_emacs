@@ -34,7 +34,7 @@
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/") t)
 (add-to-list 'package-archives
-             '("org" . "http://orgmode.org/elpa/") t)
+             '("org" . "https://orgmode.org/elpa/") t)
 
 ;;
 ;; OS-adjustments
@@ -54,14 +54,15 @@
       ;; (set-face-attribute 'default nil :font "Bitstream Vera Sans Mono" :height 95)
       ;; (set-face-attribute 'default nil :font "Ubuntu Mono" :height 120)
       ;; (set-face-attribute 'default nil :font "Source Code Pro Medium" :height 110)
-      ;; (set-face-attribute 'default nil :font "Terminus" :height 120)
-      (set-face-attribute 'default nil :font "Menlo" :height 100)
+      (set-face-attribute 'default nil :font "Terminus" :height 120)
+      ;; (set-face-attribute 'default nil :font "Inconsolata" :height 110)
+      ;; (set-face-attribute 'default nil :font "Menlo" :height 100)
       ;; Color Themes
       ;; (load-theme 'adwaita t)
       ;; (load-theme 'monokai t)
       (load-theme 'sanityinc-tomorrow-eighties t)
-      (set-background-color "#272822")
-      (set-foreground-color "#F8F8F2")
+      ;; (set-background-color "#272822")
+      ;; (set-foreground-color "#F8F8F2")
       ;; (load-theme 'tao-yin t)
       ;; (load-theme 'cobalt t)
       ;; (load-theme 'cyberpunkaxxl t)
@@ -98,22 +99,6 @@
 ;;
 ;; (smex-initialize)
 
-;;
-;; yaml mode
-;;
-(require 'yaml-mode)
-
-;;
-;; simple wiki mode
-;;
-(require 'simple-wiki)
-
-;;
-;; Emacs Server
-;;
-(server-start)
-(unless (server-running-p)
-  (server-start))
 
 ;;
 ;; AUTO-COMPLETE
@@ -123,20 +108,12 @@
 ;; (ac-config-default)
 ;; (global-auto-complete-mode t)
 
-;;
-;; company mode
-;;
-(global-company-mode t)
-(setq company-idle-delay 0.2)
-(setq company-selection-wrap-around t)
-
 ;; remove annoying blinking
 ;; (setq company-echo-delay 0)
 ;; start autocompletion only after typing
 ;; (setq company-begin-commands '(self-insert-command))
 ;; Do not convert to lowercase
 ;; (setq company-dabbrev-downcase nil)
-
 
 ;;
 ;; saveplace
@@ -146,11 +123,12 @@
 ;; (setq-default save-place t)
 ;; (require 'saveplace)
 
-
 ;;
 ;; HELM
 ;;
-(require 'helm-config)
+;; (require 'helm-config)
+
+;; OFF
 ;; (setq helm-candidate-number-limit 100)
 ;; ;; From https://gist.github.com/antifuchs/9238468
 ;; (setq helm-idle-delay 0.0 ; update fast sources immediately (doesn't).
@@ -160,75 +138,52 @@
 ;;       ;; helm-M-x-requires-pattern nil
 ;;       ;; helm-ff-skip-boring-files t
 ;;       )
-(helm-mode 1)
-(setq helm-M-x-fuzzy-match t)
+;; OFF OFF
 
-;; Keyboard shortcuts
-(global-set-key (kbd "M-x") #'helm-M-x)
-(global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
-(global-set-key (kbd "C-x C-f") #'helm-find-files)
+;; (helm-mode 1)
+;; (setq helm-M-x-fuzzy-match t)
 
-(global-set-key (kbd "C-c h")  'helm-mini)
-(global-set-key (kbd "C-h a")  'helm-apropos)
-(global-set-key (kbd "C-x C-b")  'helm-buffers-list)
-(global-set-key (kbd "C-x b")  'helm-buffers-list)
-(global-set-key (kbd "M-y")  'helm-show-kill-ring)
-;; (global-set-key (kbd "C-x c o")  'helm-occur)
-(global-set-key (kbd "C-s")  'helm-occur)
-;; (global-set-key (kbd "C-x c s")  'helm-swoop)
-(global-set-key (kbd "C-x c b")  'my/helm-do-grep-book-notes)
-(global-set-key (kbd "C-x c SPC")  'helm-all-mark-rings)
-(ido-mode -1) ;; Turn off ido mode in case I enabled it accidentally
+;; ;; Keyboard shortcuts
+;; (global-set-key (kbd "M-x") #'helm-M-x)
+;; (global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
+;; (global-set-key (kbd "C-x C-f") #'helm-find-files)
 
-;; change tab to c-j (or vice versa)
-(define-key helm-find-files-map "\t" 'helm-execute-persistent-action)
+;; (global-set-key (kbd "C-c h")  'helm-mini)
+;; (global-set-key (kbd "C-h a")  'helm-apropos)
+;; (global-set-key (kbd "C-x C-b")  'helm-buffers-list)
+;; (global-set-key (kbd "C-x b")  'helm-buffers-list)
+;; (global-set-key (kbd "M-y")  'helm-show-kill-ring)
+;; ;; (global-set-key (kbd "C-x c o")  'helm-occur)
+;; (global-set-key (kbd "C-s")  'helm-occur)
+;; ;; (global-set-key (kbd "C-x c s")  'helm-swoop)
+;; (global-set-key (kbd "C-x c b")  'my/helm-do-grep-book-notes)
+;; (global-set-key (kbd "C-x c SPC")  'helm-all-mark-rings)
+;; (ido-mode -1) ;; Turn off ido mode in case I enabled it accidentally
 
-
-
-;; ,----
-;; | magit
-;; `----
-(global-set-key (kbd "C-x g") 'magit-status)
-
-
-;; ,----
-;; | Open HTML with Firefox as default
-;; `----
-;; (setq browse-url-firefox-program "C:/Program Files (x86)/Mozilla Firefox/firefox.exe")
-(setq browse-url-generic-program "vivaldi"
-      browse-url-browser-function 'browse-url-generic)
-
+;; ;; change tab to c-j (or vice versa)
+;; (define-key helm-find-files-map "\t" 'helm-execute-persistent-action)
 
 ;; (defun play-youtube-video (url)
 ;;   (interactive "sURL: ")
 ;;   (shell-command
 ;;    (concat "youtube-dl  -o - " url " | vlc -")))
 
-;; Dired Directories first
-;; https://www.emacswiki.org/emacs/DiredSorting
-(setq dired-listing-switches "-aBhl  --group-directories-first")
-
 ;; Save Session
 ;; (desktop-save-mode 1)
 
 
-;; PDF Tools
-(pdf-tools-install)
+(setq-default electric-indent-inhibit t)
 
-;; company mode camel case
-;; https://emacs.stackexchange.com/questions/10837/how-to-make-company-mode-be-case-sensitive-on-plain-text
-(setq company-dabbrev-downcase nil)
+(setq org-reveal-root "file:///home/aschaefer/dev/reveal.js/")
 
-;; Markdown Preview Mode
+;; Browse Kill Ring
+(browse-kill-ring-default-keybindings)
 
-;; https://github.com/ancane/markdown-preview-mode
-;; (setq markdown-preview-stylesheets (list "http://thomasf.github.io/solarized-css/solarized-light.min.css"))
-;; (setq markdown-preview-stylesheets (list "~/.emacs.d/lisp/solarized-light.min.css"))
+;; org-reveal
+(require 'ox-reveal)
 
-;; Start Org Agenda at startup
-(add-hook 'after-init-hook 'org-agenda-list)
-(setq initial-buffer-choice (lambda ()
-    (get-buffer "*Org Agenda*")))  
-
-
-(require 'calfw)
+;; inserts a pipe symbol | if I work with Pauls keyboard
+(defun insert-pipe ()
+  "Inserts a pipe symbol at point."
+  (interactive)
+  (insert "|"))
