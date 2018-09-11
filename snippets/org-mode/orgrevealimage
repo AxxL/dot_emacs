@@ -1,0 +1,8 @@
+# -*- coding: utf-8; mode: snippet -*-
+# name: org ox-reveal image local
+# key: orgrevealimage
+# contributor: AXS
+# --
+
+#+ATTR_HTML: :width 70% :height 70%
+file:./images/

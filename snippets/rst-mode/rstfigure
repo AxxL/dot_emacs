@@ -1,0 +1,11 @@
+# -*- coding: utf-8; mode: snippet -*-
+# name: rst-mode insert figure
+# key: rstfigure
+# group: rst-mode
+# contributor: AxxL
+# --
+.. figure:: images/administration.png$0
+   :alt: Administration
+   :scale: 80
+
+   Administration
