@@ -12,6 +12,8 @@ eshell/
 image-dired/
 url/
 lisp/neuserver-mode.el
+server/
+transient/
 
 lisp/emacs-powerline/
 lisp/mapserver-emacs-mode/
