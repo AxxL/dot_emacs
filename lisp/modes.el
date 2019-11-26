@@ -206,7 +206,7 @@
 ;;
 ;; PDF Tools
 ;;
-(pdf-tools-install)
+;; (pdf-tools-install)
 
 
 ;; company mode camel case
